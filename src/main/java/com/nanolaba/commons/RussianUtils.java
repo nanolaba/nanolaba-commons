@@ -64,7 +64,7 @@ public class RussianUtils {
             case 'Е':
                 return "E";
             case 'Ё':
-                return "JO";
+                return "E";
             case 'Ж':
                 return "ZH";
             case 'З':
@@ -72,7 +72,7 @@ public class RussianUtils {
             case 'И':
                 return "I";
             case 'Й':
-                return "JJ";
+                return "J";
             case 'К':
                 return "K";
             case 'Л':
@@ -96,7 +96,7 @@ public class RussianUtils {
             case 'Ф':
                 return "F";
             case 'Х':
-                return "KH";
+                return "H";
             case 'Ц':
                 return "C";
             case 'Ч':
@@ -104,7 +104,7 @@ public class RussianUtils {
             case 'Ш':
                 return "SH";
             case 'Щ':
-                return "SHH";
+                return "SCH";
             case 'Ъ':
                 return "\"";
             case 'Ы':
@@ -112,7 +112,7 @@ public class RussianUtils {
             case 'Ь':
                 return "'";
             case 'Э':
-                return "EH";
+                return "E";
             case 'Ю':
                 return "JU";
             case 'Я':
@@ -132,7 +132,7 @@ public class RussianUtils {
             case 'е':
                 return "e";
             case 'ё':
-                return "yo";
+                return "e";
             case 'ж':
                 return "zh";
             case 'з':
@@ -140,7 +140,7 @@ public class RussianUtils {
             case 'и':
                 return "i";
             case 'й':
-                return "jj";
+                return "j";
             case 'к':
                 return "k";
             case 'л':
@@ -164,7 +164,7 @@ public class RussianUtils {
             case 'ф':
                 return "f";
             case 'х':
-                return "kh";
+                return "h";
             case 'ц':
                 return "c";
             case 'ч':
@@ -172,7 +172,7 @@ public class RussianUtils {
             case 'ш':
                 return "sh";
             case 'щ':
-                return "shh";
+                return "sch";
             case 'ъ':
                 return "\"";
             case 'ы':
@@ -180,7 +180,7 @@ public class RussianUtils {
             case 'ь':
                 return "'";
             case 'э':
-                return "eh";
+                return "e";
             case 'ю':
                 return "ju";
             case 'я':
