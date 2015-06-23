@@ -5,9 +5,9 @@ import java.math.BigDecimal;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 
-public class MoneyUtil {
+public class MoneyUtils {
 
-    private MoneyUtil() {
+    private MoneyUtils() {
     }
 
     public static String format(BigDecimal amount) {
