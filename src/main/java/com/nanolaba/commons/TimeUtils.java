@@ -4,6 +4,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 public class TimeUtils {
 
@@ -89,6 +90,15 @@ public class TimeUtils {
         return toDate(value, "dd.MM.yyyy");
     }
 
+
+    public static int monthLength(Integer year, Month month) {
+        GregorianCalendar calendar = (GregorianCalendar) GregorianCalendar.getInstance();
+        calendar.set(Calendar.DAY_OF_MONTH, 1);
+        calendar.set(Calendar.YEAR, year);
+        calendar.set(Calendar.MONTH, month.getMonthNumber() - 1);
+        return calendar.getActualMaximum(Calendar.DAY_OF_MONTH);
+    }
+
     public static Date getDateWithoutTime(Date date) {
         if (date == null) {
             return null;
@@ -99,6 +109,52 @@ public class TimeUtils {
             return dateFormat.parse(dateFormat.format(date));
         } catch (ParseException e) {
             throw new RuntimeException(e);
+        }
+    }
+
+    public static String getDayOfWeek(Date date) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        switch (calendar.get(Calendar.DAY_OF_WEEK)) {
+            case 2:
+                return "понедельник";
+            case 3:
+                return "вторник";
+            case 4:
+                return "среда";
+            case 5:
+                return "четверг";
+            case 6:
+                return "пятница";
+            case 7:
+                return "суббота";
+            case 1:
+                return "воскресенье";
+            default:
+                return "";
+        }
+    }
+
+    public static String getDayOfWeekShort(Date date) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        switch (calendar.get(Calendar.DAY_OF_WEEK)) {
+            case 2:
+                return "пн";
+            case 3:
+                return "вт";
+            case 4:
+                return "ср";
+            case 5:
+                return "чт";
+            case 6:
+                return "пт";
+            case 7:
+                return "сб";
+            case 1:
+                return "вс";
+            default:
+                return "";
         }
     }
 
