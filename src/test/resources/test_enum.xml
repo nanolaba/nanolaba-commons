@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+         http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
+
+
+    <bean class="com.nanolaba.commons.EnumInitializer">
+        <property name="params">
+            <map>
+                <entry key="VALUE_A">
+                    <map>
+                        <entry key="title" value="titleA"/>
+                        <entry key="bool" value="true"/>
+                        <entry key="values">
+                            <list>
+                                <value>1</value>
+                                <value>2</value>
+                            </list>
+                        </entry>
+                    </map>
+                </entry>
+                <entry key="VALUE_B">
+                    <map>
+                        <entry key="title" value="titleB"/>
+                        <entry key="bool" value="false"/>
+                        <entry key="values">
+                            <list>
+                                <value>a</value>
+                                <value>b</value>
+                            </list>
+                        </entry>
+                    </map>
+                </entry>
+            </map>
+        </property>
+    </bean>
+
+</beans>
+
