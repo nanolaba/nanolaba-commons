@@ -58,6 +58,11 @@ public class TimeUtils {
     }
 
     public static Date convert(Date date, TimeZone from, TimeZone to) {
+
+        if (date == null) {
+            return null;
+        }
+
         SimpleDateFormat defaultFormatter = new SimpleDateFormat("dd-M-yyyy hh:mm:ss a");
         defaultFormatter.setTimeZone(from);
         SimpleDateFormat f = new SimpleDateFormat("dd-M-yyyy hh:mm:ss a");
