@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.TimeZone;
 
 public class TimeUtils {
 
@@ -54,6 +55,18 @@ public class TimeUtils {
         return calendar.get(Calendar.DAY_OF_MONTH) + " " +
                 MONTHS_0[calendar.get(Calendar.MONTH)] + (showYear ? " " +
                 calendar.get(Calendar.YEAR) : "");
+    }
+
+    public static Date convert(Date date, TimeZone from, TimeZone to) {
+        SimpleDateFormat defaultFormatter = new SimpleDateFormat("dd-M-yyyy hh:mm:ss a");
+        defaultFormatter.setTimeZone(from);
+        SimpleDateFormat f = new SimpleDateFormat("dd-M-yyyy hh:mm:ss a");
+        f.setTimeZone(to);
+        try {
+            return defaultFormatter.parse(f.format(date));
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public static String formatTime(Date date) {
