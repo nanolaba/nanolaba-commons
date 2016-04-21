@@ -27,6 +27,14 @@ public class TimeUtils {
 
     private TimeUtils() {/**/}
 
+    public static Date min(Date a, Date b) {
+        return a.after(b) ? b : a;
+    }
+
+    public static Date max(Date a, Date b) {
+        return b.after(a) ? b : a;
+    }
+
     public static String formatDate(Date date, boolean showYear) {
         return formatDate(date, showYear, true);
     }
