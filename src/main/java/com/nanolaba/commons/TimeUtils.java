@@ -139,9 +139,7 @@ public class TimeUtils {
     }
 
     public static String getDayOfWeek(Date date) {
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTime(date);
-        switch (calendar.get(Calendar.DAY_OF_WEEK)) {
+        switch (getCalendarField(date, Calendar.DAY_OF_WEEK)) {
             case 2:
                 return "понедельник";
             case 3:
@@ -159,6 +157,12 @@ public class TimeUtils {
             default:
                 return "";
         }
+    }
+
+    public static int getCalendarField(Date date, int field) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        return calendar.get(field);
     }
 
     public static String getDayOfWeekShort(Date date) {

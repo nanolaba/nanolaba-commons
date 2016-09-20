@@ -13,16 +13,17 @@ public class TranslitUtils {
 
     public static String translit(String text, InputStream translitRules) throws IOException {
 
-        BufferedReader in = new BufferedReader(new InputStreamReader(translitRules, "UTF-8"));
-        String s;
-        while ((s = in.readLine()) != null) {
-            s = s.trim();
-            if (!s.startsWith("#") && s.contains("=")) {
-                String[] split = s.split("=");
-                String key = split[0];
-                String value = split[1];
+        try (BufferedReader in = new BufferedReader(new InputStreamReader(translitRules, "UTF-8"))) {
+            String s;
+            while ((s = in.readLine()) != null) {
+                s = s.trim();
+                if (!s.startsWith("#") && s.contains("=")) {
+                    String[] split = s.split("=");
+                    String key = split[0];
+                    String value = split[1];
 
-                text = text.replace(key, value);
+                    text = text.replace(key, value);
+                }
             }
         }
 
