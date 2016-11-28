@@ -4,7 +4,7 @@
     <groupId>com.nanolaba</groupId>
     <artifactId>nanolaba-commons</artifactId>
     <name>nanolaba-commons</name>
-    <version>0.0.13</version>
+    <version>0.0.14</version>
     <packaging>jar</packaging>
 
     <properties>
@@ -12,6 +12,7 @@
         <github.global.server>github</github.global.server>
         <junit.version>4.12</junit.version>
         <spring.version>4.1.6.RELEASE</spring.version>
+        <commons-lang3.version>3.4</commons-lang3.version>
     </properties>
 
 
@@ -30,11 +31,18 @@
 
 
     <dependencies>
+
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>${junit.version}</version>
             <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>${commons-lang3.version}</version>
         </dependency>
 
         <!--<dependency>-->
@@ -88,7 +96,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>2.3.2</version>
+                <version>3.1</version>
                 <configuration>
                     <source>1.8</source>
                     <target>1.8</target>
@@ -98,7 +106,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-source-plugin</artifactId>
-                <version>2.2.1</version>
+                <version>2.4</version>
                 <executions>
                     <execution>
                         <id>attach-sources</id>
