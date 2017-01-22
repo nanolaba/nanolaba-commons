@@ -1,5 +1,7 @@
 package com.nanolaba.commons;
 
+import com.nanolaba.commons.exceptions.ParseDateException;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -78,7 +80,7 @@ public class TimeUtils {
         try {
             return defaultFormatter.parse(f.format(date));
         } catch (ParseException e) {
-            throw new RuntimeException(e);
+            throw new ParseDateException(e);
         }
     }
 
@@ -108,14 +110,13 @@ public class TimeUtils {
         try {
             return value == null || value.trim().isEmpty() ? null : new SimpleDateFormat(format).parse(value);
         } catch (ParseException e) {
-            throw new RuntimeException(e);
+            throw new ParseDateException(e);
         }
     }
 
     public static Date toDate(String value) {
         return toDate(value, "dd.MM.yyyy");
     }
-
 
     public static int monthLength(Integer year, Month month) {
         GregorianCalendar calendar = (GregorianCalendar) GregorianCalendar.getInstance();
@@ -134,7 +135,7 @@ public class TimeUtils {
             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd");
             return dateFormat.parse(dateFormat.format(date));
         } catch (ParseException e) {
-            throw new RuntimeException(e);
+            throw new ParseDateException(e);
         }
     }
 
