@@ -22,6 +22,10 @@ public class Interval<T extends Comparable<T> & Serializable> implements Seriali
         return new Interval<>(from, to, includeFrom, includeTo);
     }
 
+    public static <T extends Comparable & Serializable> Interval value(T value) {
+        return new Interval<>(value, value, true, true);
+    }
+
     public Interval(T from, T to, boolean includeFrom, boolean includeTo) {
         this.from = from;
         this.to = to;
