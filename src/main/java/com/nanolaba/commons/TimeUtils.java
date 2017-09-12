@@ -8,6 +8,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.TimeZone;
+import java.util.concurrent.TimeUnit;
 
 public class TimeUtils {
 
@@ -187,6 +188,11 @@ public class TimeUtils {
             default:
                 return "";
         }
+    }
+
+    public static long getDifference(Date date1, Date date2, TimeUnit timeUnit) {
+        long diffInMillies = date2.getTime() - date1.getTime();
+        return timeUnit.convert(diffInMillies, TimeUnit.MILLISECONDS);
     }
 
     public static int getWorkingDaysBetweenTwoDates(Date startDate, Date endDate) {
