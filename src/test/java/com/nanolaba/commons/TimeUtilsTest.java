@@ -6,6 +6,7 @@ import org.junit.Test;
 
 import java.util.Date;
 import java.util.TimeZone;
+import java.util.concurrent.TimeUnit;
 
 public class TimeUtilsTest {
 
@@ -31,6 +32,13 @@ public class TimeUtilsTest {
 
         Assert.assertNotSame(date.toString(), convert.toString());
         Assert.assertEquals(date.toString(), convert2.toString());
+    }
+
+    @Test
+    public void testDiff() {
+        Assert.assertEquals(0, TimeUtils.getDifference(new Date(), new Date(), TimeUnit.DAYS));
+        Assert.assertEquals(0, TimeUtils.getDifference(TimeUtils.toDate("01.01.2011"), TimeUtils.toDate("01.01.2011"), TimeUnit.DAYS));
+        Assert.assertEquals(1, TimeUtils.getDifference(TimeUtils.toDate("01.01.2011"), TimeUtils.toDate("02.01.2011"), TimeUnit.DAYS));
     }
 
     @Test
