@@ -42,6 +42,7 @@ public class RussianUtils {
         return res.toString();
     }
 
+
     /**
      * Метод транслитерирует русский символ
      *
@@ -190,4 +191,61 @@ public class RussianUtils {
         }
     }
 
+    public static String replaceRussianLettersWithEnglish(String text) {
+        StringBuilder res = new StringBuilder();
+        if (text != null) {
+            for (char ch : text.toCharArray()) {
+                res.append(replaceRussianLettersWithEnglish(ch));
+            }
+        }
+        return res.toString();
+    }
+
+    public static String replaceRussianLettersWithEnglish(char ch) {
+        // ГОСТ 16876-71
+        switch (ch) {
+            case 'А':
+                return "A";
+            case 'В':
+                return "B";
+            case 'Е':
+                return "E";
+            case 'К':
+                return "K";
+            case 'М':
+                return "M";
+            case 'Н':
+                return "H";
+            case 'О':
+                return "O";
+            case 'Р':
+                return "P";
+            case 'С':
+                return "C";
+            case 'Т':
+                return "T";
+            case 'У':
+                return "Y";
+            case 'Х':
+                return "X";
+            case 'а':
+                return "a";
+            case 'е':
+                return "e";
+            case 'к':
+                return "k";
+            case 'о':
+                return "o";
+            case 'р':
+                return "p";
+            case 'с':
+                return "c";
+            case 'у':
+                return "y";
+            case 'х':
+                return "x";
+            default:
+                return String.valueOf(ch);
+        }
+    }
 }
