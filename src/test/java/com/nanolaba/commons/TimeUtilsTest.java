@@ -9,6 +9,24 @@ import java.util.TimeZone;
 import java.util.concurrent.TimeUnit;
 
 public class TimeUtilsTest {
+    @Test
+    public void getDateWithoutTime() throws Exception {
+        Date date = new Date();
+        Date convert = TimeUtils.getDateWithoutTime(date);
+
+        System.out.println(date);
+        System.out.println(convert);
+
+    }
+
+    @Test
+    public void getDateWithoutMilliseconds() throws Exception {
+        Date date = new Date();
+        Date convert = TimeUtils.getDateWithoutMilliseconds(date);
+
+        System.out.println(date);
+        System.out.println(convert);
+    }
 
     @Test
     public void testDateInWords() {

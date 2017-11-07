@@ -140,6 +140,19 @@ public class TimeUtils {
         }
     }
 
+    public static Date getDateWithoutMilliseconds(Date date) {
+        if (date == null) {
+            return null;
+        }
+
+        try {
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy.MM.dd HH:mm:ss");
+            return dateFormat.parse(dateFormat.format(date));
+        } catch (ParseException e) {
+            throw new ParseDateException(e);
+        }
+    }
+
     public static String getDayOfWeek(Date date) {
         switch (getCalendarField(date, Calendar.DAY_OF_WEEK)) {
             case 2:
