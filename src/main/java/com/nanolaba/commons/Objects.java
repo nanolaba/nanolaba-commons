@@ -1,8 +1,8 @@
 package com.nanolaba.commons;
 
-public class ObjectUtils {
+public class Objects {
 
-    private ObjectUtils() {
+    private Objects() {
     }
 
     public static boolean eq(Object a, Object b) {
