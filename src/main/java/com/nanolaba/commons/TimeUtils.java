@@ -174,6 +174,13 @@ public class TimeUtils {
         }
     }
 
+    public static Integer getYear(Date date) {
+        if (date != null) {
+            return getCalendarField(date, Calendar.YEAR);
+        }
+        return null;
+    }
+
     public static int getCalendarField(Date date, int field) {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(date);
