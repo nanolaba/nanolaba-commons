@@ -1,5 +1,7 @@
 package com.nanolaba.commons;
 
+import org.apache.commons.lang3.StringUtils;
+
 public class RussianUtils {
 
     private RussianUtils() {/**/}
@@ -10,7 +12,7 @@ public class RussianUtils {
 
         for (String t : new String[]{f, i, o}) {
             if (t != null && !(t = t.trim()).isEmpty()) {
-                res += (res.isEmpty() ? "" : " ") + t;
+                res += (res.isEmpty() ? "" : " ") + StringUtils.capitalize(t.toLowerCase());
             }
         }
 
@@ -19,9 +21,9 @@ public class RussianUtils {
 
     public static String getFIOShort(String f, String i, String o) {
 
-        return ((f == null ? "" : (f.trim() + ' ')) +
-                (i != null && !i.trim().isEmpty() ? i.trim().substring(0, 1) + '.' : "") +
-                (o != null && !o.trim().isEmpty() ? o.trim().substring(0, 1) + '.' : "")).trim();
+        return ((f == null ? "" : (StringUtils.capitalize(f.trim().toLowerCase()) + ' ')) +
+                (i != null && !i.trim().isEmpty() ? i.trim().substring(0, 1).toUpperCase() + '.' : "") +
+                (o != null && !o.trim().isEmpty() ? o.trim().substring(0, 1).toUpperCase() + '.' : "")).trim();
     }
 
 
