@@ -6,6 +6,12 @@ public class RussianUtils {
 
     private RussianUtils() {/**/}
 
+    public static boolean isNameCorrect(String name) {
+        return name != null
+                && name.trim().length() > 1
+                && name.matches("[А-ЯЁ][-А-яЁё]+");
+    }
+
     public static String getFIO(String f, String i, String o) {
 
         String res = "";

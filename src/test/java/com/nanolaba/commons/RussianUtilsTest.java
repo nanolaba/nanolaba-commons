@@ -31,4 +31,24 @@ public class RussianUtilsTest {
 
 
     }
+
+    @Test
+    public void testCorrection() {
+        Assert.assertTrue(RussianUtils.isNameCorrect("Ваня"));
+        Assert.assertTrue(RussianUtils.isNameCorrect("Саша"));
+        Assert.assertTrue(RussianUtils.isNameCorrect("Анотолий"));
+        Assert.assertTrue(RussianUtils.isNameCorrect("Виктор-Мария"));
+        Assert.assertTrue(RussianUtils.isNameCorrect("Мамин-Сибиряк"));
+
+        Assert.assertFalse(RussianUtils.isNameCorrect("саша"));
+        Assert.assertFalse(RussianUtils.isNameCorrect("ваня"));
+        Assert.assertFalse(RussianUtils.isNameCorrect("Мамин-Сибиряк."));
+        Assert.assertFalse(RussianUtils.isNameCorrect("Мамин Сибиряк"));
+        Assert.assertFalse(RussianUtils.isNameCorrect("т.б."));
+        Assert.assertFalse(RussianUtils.isNameCorrect("sasha"));
+        Assert.assertFalse(RussianUtils.isNameCorrect(""));
+        Assert.assertFalse(RussianUtils.isNameCorrect("1231"));
+        Assert.assertFalse(RussianUtils.isNameCorrect("саша1"));
+    }
+
 }
