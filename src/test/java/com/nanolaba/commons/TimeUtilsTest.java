@@ -59,18 +59,4 @@ public class TimeUtilsTest {
         Assert.assertEquals(1, TimeUtils.getDifference(TimeUtils.toDate("01.01.2011"), TimeUtils.toDate("02.01.2011"), TimeUnit.DAYS));
     }
 
-    @Test
-    public void testBusinessDays() {
-        Assert.assertEquals(0, TimeUtils.getWorkingDaysBetweenTwoDates(TimeUtils.toDate("08.07.2017"), TimeUtils.toDate("08.07.2017")));
-        Assert.assertEquals(0, TimeUtils.getWorkingDaysBetweenTwoDates(TimeUtils.toDate("08.07.2017"), TimeUtils.toDate("09.07.2017")));
-        Assert.assertEquals(1, TimeUtils.getWorkingDaysBetweenTwoDates(TimeUtils.toDate("08.07.2017"), TimeUtils.toDate("10.07.2017")));
-        Assert.assertEquals(2, TimeUtils.getWorkingDaysBetweenTwoDates(TimeUtils.toDate("08.07.2017"), TimeUtils.toDate("11.07.2017")));
-        Assert.assertEquals(3, TimeUtils.getWorkingDaysBetweenTwoDates(TimeUtils.toDate("08.07.2017"), TimeUtils.toDate("12.07.2017")));
-        Assert.assertEquals(4, TimeUtils.getWorkingDaysBetweenTwoDates(TimeUtils.toDate("08.07.2017"), TimeUtils.toDate("13.07.2017")));
-        Assert.assertEquals(5, TimeUtils.getWorkingDaysBetweenTwoDates(TimeUtils.toDate("08.07.2017"), TimeUtils.toDate("14.07.2017")));
-        Assert.assertEquals(5, TimeUtils.getWorkingDaysBetweenTwoDates(TimeUtils.toDate("08.07.2017"), TimeUtils.toDate("15.07.2017")));
-        Assert.assertEquals(5, TimeUtils.getWorkingDaysBetweenTwoDates(TimeUtils.toDate("08.07.2017"), TimeUtils.toDate("16.07.2017")));
-        Assert.assertEquals(6, TimeUtils.getWorkingDaysBetweenTwoDates(TimeUtils.toDate("08.07.2017"), TimeUtils.toDate("17.07.2017")));
-        Assert.assertEquals(7, TimeUtils.getWorkingDaysBetweenTwoDates(TimeUtils.toDate("08.07.2017"), TimeUtils.toDate("18.07.2017")));
-    }
 }
