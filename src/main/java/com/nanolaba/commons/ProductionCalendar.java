@@ -1,5 +1,7 @@
 package com.nanolaba.commons;
 
+import org.apache.commons.lang3.time.DateUtils;
+
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
@@ -410,6 +412,22 @@ public class ProductionCalendar {
         } while (startCal.getTimeInMillis() <= endCal.getTimeInMillis());
 
         return workDays;
+    }
+
+    public static Date addWorkingDays(Date date, int days) {
+
+        while (days != 0) {
+            date = DateUtils.addDays(date, days < 0 ? -1 : 1);
+            if (getDayType(date) != DayType.HOLIDAY) {
+                if (days > 0) {
+                    days--;
+                } else {
+                    days++;
+                }
+            }
+        }
+
+        return date;
     }
 
 //
