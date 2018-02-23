@@ -42,7 +42,7 @@ public class TimeUtils {
         return formatDate(date, showYear, true);
     }
 
-    public static String formatDate(Date date, boolean showYear, boolean showWords) {
+    public static String formatDate(Date date, boolean showYear, boolean useWords) {
         if (date == null) {
             return null;
         }
@@ -51,7 +51,7 @@ public class TimeUtils {
 
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy");
 
-        if (showWords) {
+        if (useWords) {
             if (dateFormat.format(date).equals(dateFormat.format(new Date()))) {
                 return "сегодня";
             }
@@ -86,6 +86,10 @@ public class TimeUtils {
     }
 
     public static String formatTime(Date date) {
+        return formatTime(date, true);
+    }
+
+    public static String formatTime(Date date, boolean useWords) {
         if (date == null) {
             return "";
         }
@@ -95,7 +99,7 @@ public class TimeUtils {
         int min = calendar.get(Calendar.MINUTE);
         int hours = calendar.get(Calendar.HOUR_OF_DAY);
         calendar.setTime(date);
-        return formatDate(date, true) + " в " +
+        return formatDate(date, true, useWords) + " в " +
                 (hours < 10 ? "0" : "") + hours + ':' + (min < 10 ? "0" : "") + min;
     }
 
