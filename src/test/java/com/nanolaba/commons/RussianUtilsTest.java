@@ -30,6 +30,9 @@ public class RussianUtilsTest {
         Assert.assertEquals("Иванов", RussianUtils.getFIOShort(" иванов  ", "\t", ""));
 
 
+        Assert.assertEquals("Козлова-Афанасьевна Л П", RussianUtils.getFIO(" козлова-афанасьевна  ", "л", "п"));
+
+
     }
 
     @Test

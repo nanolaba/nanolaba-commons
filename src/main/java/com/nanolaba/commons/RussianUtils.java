@@ -1,7 +1,5 @@
 package com.nanolaba.commons;
 
-import org.apache.commons.lang3.StringUtils;
-
 public class RussianUtils {
 
     private RussianUtils() {/**/}
@@ -18,16 +16,29 @@ public class RussianUtils {
 
         for (String t : new String[]{f, i, o}) {
             if (t != null && !(t = t.trim()).isEmpty()) {
-                res += (res.isEmpty() ? "" : " ") + StringUtils.capitalize(t.toLowerCase());
+                res += (res.isEmpty() ? "" : " ") + capitalizeName(t.toLowerCase());
             }
         }
 
         return res;
     }
 
+    private static String capitalizeName(String name) {
+        name = name.toLowerCase();
+        char[] chars = new char[name.length()];
+        for (int i = 0; i < name.length(); ++i) {
+            if (i == 0 || (name.charAt(i - 1) == '-')) {
+                chars[i] = Character.toTitleCase(name.charAt(i));
+            } else {
+                chars[i] = name.charAt(i);
+            }
+        }
+        return new String(chars);
+    }
+
     public static String getFIOShort(String f, String i, String o) {
 
-        return ((f == null ? "" : (StringUtils.capitalize(f.trim().toLowerCase()) + ' ')) +
+        return ((f == null ? "" : (capitalizeName(f.trim().toLowerCase()) + ' ')) +
                 (i != null && !i.trim().isEmpty() ? i.trim().substring(0, 1).toUpperCase() + '.' : "") +
                 (o != null && !o.trim().isEmpty() ? o.trim().substring(0, 1).toUpperCase() + '.' : "")).trim();
     }
