@@ -74,4 +74,25 @@ public class DateInterval extends Interval<Date> {
         return res;
     }
 
+    @Override
+    public String toString() {
+        return toString("dd.MM.yyyy HH:mm");
+    }
+
+    public String toString(String dateFormat) {
+        StringBuilder res = new StringBuilder();
+
+        if (getFrom() != null) {
+            res.append("с " + TimeUtils.toString(getFrom(), dateFormat));
+        }
+        if (getTo() != null) {
+            if (res.length() > 0) {
+                res.append(" ");
+            }
+            res.append("по " + TimeUtils.toString(getTo(), dateFormat));
+        }
+
+
+        return res.toString();
+    }
 }

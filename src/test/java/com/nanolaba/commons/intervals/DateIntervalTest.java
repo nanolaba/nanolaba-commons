@@ -8,6 +8,13 @@ import org.junit.Test;
 public class DateIntervalTest {
 
     @Test
+    public void testToString() {
+
+        DateInterval interval = DateInterval.create(TimeUtils.toDate("1.1.2011"), TimeUtils.toDate("10.1.2011"), true, true);
+        Assert.assertEquals("с 01.01.2011 00:00 по 10.01.2011 00:00", interval.toString());
+    }
+
+    @Test
     public void testSplitByDay() {
         DateInterval interval = DateInterval.create(TimeUtils.toDate("1.1.2011"), TimeUtils.toDate("10.1.2011"), true, true);
         Assert.assertEquals(10, interval.splitByDays().size());
