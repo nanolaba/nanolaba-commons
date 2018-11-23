@@ -152,4 +152,11 @@ public class Interval<T extends Comparable<T> & Serializable> implements Seriali
     public boolean hasBorders() {
         return from != null || to != null;
     }
+
+    @Override
+    public String toString() {
+        return (includeFrom ? "[" : ")") +
+                from + "; " + to +
+                (includeTo ? "]" : ")");
+    }
 }

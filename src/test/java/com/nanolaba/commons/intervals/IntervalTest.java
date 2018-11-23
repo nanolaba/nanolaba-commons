@@ -63,4 +63,9 @@ public class IntervalTest {
         Assert.assertFalse(Interval.create(0, 100, false, false).contains(0));
         Assert.assertFalse(Interval.create(0, 100, false, false).contains(100));
     }
+
+    @Test
+    public void testToString() {
+        Assert.assertEquals("[0; 100)", Interval.create(0, 100, true, false).toString());
+    }
 }
