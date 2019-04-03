@@ -59,4 +59,9 @@ public class TimeUtilsTest {
         Assert.assertEquals(1, TimeUtils.getDifference(TimeUtils.toDate("01.01.2011"), TimeUtils.toDate("02.01.2011"), TimeUnit.DAYS));
     }
 
+    @Test
+    public void testGetMonthAndYear() {
+        Assert.assertEquals("Январь 2011 года", TimeUtils.getMonthAndYear(TimeUtils.toDate("01.01.2011")));
+        Assert.assertEquals("Ноябрь 2021 года", TimeUtils.getMonthAndYear(TimeUtils.toDate("11.11.2021")));
+    }
 }

@@ -12,6 +12,9 @@ import java.util.concurrent.TimeUnit;
 
 public class TimeUtils {
 
+    public static final String[] MONTH_NAMES = {"Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август",
+            "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"};
+
     private static final String[] MONTHS_0 = {
             "января", "февраля", "марта", "апреля", "мая", "июня", "июля", "августа",
             "сентября", "октября", "ноября", "декабря",
@@ -124,7 +127,7 @@ public class TimeUtils {
     }
 
     public static int monthLength(Integer year, Month month) {
-        GregorianCalendar calendar = (GregorianCalendar) GregorianCalendar.getInstance();
+        GregorianCalendar calendar = (GregorianCalendar) Calendar.getInstance();
         calendar.set(Calendar.DAY_OF_MONTH, 1);
         calendar.set(Calendar.YEAR, year);
         calendar.set(Calendar.MONTH, month.getMonthNumber() - 1);
@@ -240,7 +243,7 @@ public class TimeUtils {
             if (d == 20) res += "двадцатое";
             if (d == 30) res += "тридцатое";
             if (d < 20) res += DAY_1[d - 10];
-            if ((d > 20) && (d < 30)) res += "двадцать " + DAY_0[d - 21];
+            if (d > 20 && d < 30) res += "двадцать " + DAY_0[d - 21];
             if (d > 30) res += "тридцать " + DAY_0[d - 31];
         }
         //Month
@@ -248,14 +251,14 @@ public class TimeUtils {
 
         //Year
         res += " ";
-        if ((y % 1000) != 0) {
+        if (y % 1000 != 0) {
             res += Y_5[y / 1000] + " ";
             y = y % 1000;
             if (y % 100 != 0) {
                 res += Y_3[y / 100] + " ";
                 y = y % 100;
                 if (y % 10 != 0) {
-                    if ((y > 10) && (y < 20))
+                    if (y > 10 && y < 20)
                         res += Y_11[y - 11];
                     else res += Y_2[y / 10] + " " + Y_0[y % 10];
                 } else res += Y_1[y / 10];
@@ -264,5 +267,10 @@ public class TimeUtils {
         res += " года";
 
         return res.replaceAll("[ ]+", " ");
+    }
+
+    public static String getMonthAndYear(Date date) {
+        return MONTH_NAMES[Integer.valueOf(toString(date, "MM")) - 1] + ' ' +
+                toString(date, "yyyy") + " года";
     }
 }
