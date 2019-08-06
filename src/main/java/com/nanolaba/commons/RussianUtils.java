@@ -27,7 +27,7 @@ public class RussianUtils {
         name = name.toLowerCase();
         char[] chars = new char[name.length()];
         for (int i = 0; i < name.length(); ++i) {
-            if (i == 0 || (name.charAt(i - 1) == '-')) {
+            if (i == 0 || (name.charAt(i - 1) == '-') || (name.charAt(i - 1) == '(')) {
                 chars[i] = Character.toTitleCase(name.charAt(i));
             } else {
                 chars[i] = name.charAt(i);
