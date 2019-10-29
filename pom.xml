@@ -12,7 +12,7 @@
         <github.global.server>github</github.global.server>
 
         <junit.version>4.12</junit.version>
-        <spring.version>4.1.6.RELEASE</spring.version>
+        <spring.version>5.2.0.RELEASE</spring.version>
         <commons-dbcp.version>2.5.0</commons-dbcp.version>
         <commons-io.version>2.6</commons-io.version>
         <commons-collections.version>4.2</commons-collections.version>
