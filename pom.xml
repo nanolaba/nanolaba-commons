@@ -12,6 +12,8 @@
         <github.global.server>github</github.global.server>
 
         <junit.version>4.12</junit.version>
+        <mockito.version>3.1.0</mockito.version>
+
         <spring.version>5.2.0.RELEASE</spring.version>
         <commons-dbcp.version>2.5.0</commons-dbcp.version>
         <commons-io.version>2.6</commons-io.version>
@@ -43,6 +45,12 @@
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>${mockito.version}</version>
             <scope>test</scope>
         </dependency>
 
