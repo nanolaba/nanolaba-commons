@@ -20,10 +20,10 @@ public class Slf4jLoggerTest {
 
     @Test
     public void testDebugLog() {
-        LOG.debug(LOGTest.class, new RuntimeException("ex"), () -> "ex1");
-        LOG.debug(LOGTest.class, new RuntimeException("ex"), "ex2");
-        LOG.debug(LOGTest.class, () -> "ex3");
-        LOG.debug(LOGTest.class, "ex4");
+        LOG.debug(Slf4jLoggerTest.class, new RuntimeException("ex"), () -> "ex1");
+        LOG.debug(Slf4jLoggerTest.class, new RuntimeException("ex"), "ex2");
+        LOG.debug(Slf4jLoggerTest.class, () -> "ex3");
+        LOG.debug(Slf4jLoggerTest.class, "ex4");
         LOG.debug(() -> "ex5");
         LOG.debug("ex6");
         LOG.debug(new RuntimeException("ex7"), () -> "ex7");

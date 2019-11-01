@@ -212,7 +212,7 @@ public class LOG {
                             result = result.getEnclosingClass();
                         }
 
-                        if (result.equals(LOG.class) || result.equals(LogEntry.class)) {
+                        if (result.equals(LOG.class) || result.equals(LogEntry.class) || ILogger.class.isAssignableFrom(result)) {
                             continue;
                         }
                     }
