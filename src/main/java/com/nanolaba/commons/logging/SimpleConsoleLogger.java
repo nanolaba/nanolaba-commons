@@ -10,9 +10,7 @@ public class SimpleConsoleLogger implements ILogger {
         Object message = entry.getMessage();
         Throwable throwable = entry.getThrowable();
 
-
-        PrintStream out = level == LogEntry.LogEntryLevel.INFO || level == LogEntry.LogEntryLevel.DEBUG ?
-                System.out : System.err;
+        PrintStream out = level == LogEntry.LogEntryLevel.ERROR ? System.err : System.out;
 
         out.print(level);
         if (aClass != null) {

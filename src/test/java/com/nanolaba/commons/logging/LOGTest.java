@@ -107,35 +107,35 @@ public class LOGTest {
 
 
     @Test
-    public void testFatalLog() {
+    public void testWarnLog() {
 
         Mutable<String> message = new MutableObject<>();
 
         LOG.init(entry -> message.setValue(entry.toString()));
 
-        LOG.fatal(LOGTest.class, new RuntimeException("ex"), () -> "ex1");
-        Assert.assertEquals("LogEntry{level=FATAL, sourceClass=com.nanolaba.commons.logging.LOGTest, throwable=java.lang.RuntimeException: ex, message=ex1}", message.getValue());
+        LOG.warn(LOGTest.class, new RuntimeException("ex"), () -> "ex1");
+        Assert.assertEquals("LogEntry{level=WARN, sourceClass=com.nanolaba.commons.logging.LOGTest, throwable=java.lang.RuntimeException: ex, message=ex1}", message.getValue());
 
-        LOG.fatal(LOGTest.class, new RuntimeException("ex"), "ex2");
-        Assert.assertEquals("LogEntry{level=FATAL, sourceClass=com.nanolaba.commons.logging.LOGTest, throwable=java.lang.RuntimeException: ex, message=ex2}", message.getValue());
+        LOG.warn(LOGTest.class, new RuntimeException("ex"), "ex2");
+        Assert.assertEquals("LogEntry{level=WARN, sourceClass=com.nanolaba.commons.logging.LOGTest, throwable=java.lang.RuntimeException: ex, message=ex2}", message.getValue());
 
-        LOG.fatal(LOGTest.class, () -> "ex3");
-        Assert.assertEquals("LogEntry{level=FATAL, sourceClass=com.nanolaba.commons.logging.LOGTest, throwable=null, message=ex3}", message.getValue());
+        LOG.warn(LOGTest.class, () -> "ex3");
+        Assert.assertEquals("LogEntry{level=WARN, sourceClass=com.nanolaba.commons.logging.LOGTest, throwable=null, message=ex3}", message.getValue());
 
-        LOG.fatal(LOGTest.class, "ex4");
-        Assert.assertEquals("LogEntry{level=FATAL, sourceClass=com.nanolaba.commons.logging.LOGTest, throwable=null, message=ex4}", message.getValue());
+        LOG.warn(LOGTest.class, "ex4");
+        Assert.assertEquals("LogEntry{level=WARN, sourceClass=com.nanolaba.commons.logging.LOGTest, throwable=null, message=ex4}", message.getValue());
 
-        LOG.fatal(() -> "ex5");
-        Assert.assertEquals("LogEntry{level=FATAL, sourceClass=com.nanolaba.commons.logging.LOGTest, throwable=null, message=ex5}", message.getValue());
+        LOG.warn(() -> "ex5");
+        Assert.assertEquals("LogEntry{level=WARN, sourceClass=com.nanolaba.commons.logging.LOGTest, throwable=null, message=ex5}", message.getValue());
 
-        LOG.fatal("ex6");
-        Assert.assertEquals("LogEntry{level=FATAL, sourceClass=com.nanolaba.commons.logging.LOGTest, throwable=null, message=ex6}", message.getValue());
+        LOG.warn("ex6");
+        Assert.assertEquals("LogEntry{level=WARN, sourceClass=com.nanolaba.commons.logging.LOGTest, throwable=null, message=ex6}", message.getValue());
 
-        LOG.fatal(new RuntimeException("ex7"), () -> "ex7");
-        Assert.assertEquals("LogEntry{level=FATAL, sourceClass=com.nanolaba.commons.logging.LOGTest, throwable=java.lang.RuntimeException: ex7, message=ex7}", message.getValue());
+        LOG.warn(new RuntimeException("ex7"), () -> "ex7");
+        Assert.assertEquals("LogEntry{level=WARN, sourceClass=com.nanolaba.commons.logging.LOGTest, throwable=java.lang.RuntimeException: ex7, message=ex7}", message.getValue());
 
-        LOG.fatal(new RuntimeException("ex8"), "ex8");
-        Assert.assertEquals("LogEntry{level=FATAL, sourceClass=com.nanolaba.commons.logging.LOGTest, throwable=java.lang.RuntimeException: ex8, message=ex8}", message.getValue());
+        LOG.warn(new RuntimeException("ex8"), "ex8");
+        Assert.assertEquals("LogEntry{level=WARN, sourceClass=com.nanolaba.commons.logging.LOGTest, throwable=java.lang.RuntimeException: ex8, message=ex8}", message.getValue());
     }
 
 

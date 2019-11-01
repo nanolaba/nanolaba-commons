@@ -4,13 +4,49 @@ import java.util.function.Supplier;
 
 public class LOG {
 
-    private static ILogger logger;
+    private static ILogger logger = new SimpleConsoleLogger();
 
-    private LOG() {
-    }
+    private LOG() {/**/}
 
     public static void init(ILogger logger) {
         LOG.logger = logger;
+    }
+
+    // TRACE
+    public static void trace(Class targetClass, Throwable t, Supplier<Object> message) {
+        logger.log(new LogEntry(LogEntry.LogEntryLevel.TRACE, () -> targetClass, t, memoize(message)));
+    }
+
+    public static void trace(Class targetClass, Throwable t, Object message) {
+        logger.log(new LogEntry(LogEntry.LogEntryLevel.TRACE, () -> targetClass, t, () -> message));
+    }
+
+    public static void trace(Class targetClass, Supplier<Object> message) {
+        logger.log(new LogEntry(LogEntry.LogEntryLevel.TRACE, () -> targetClass, null, memoize(message)));
+    }
+
+    public static void trace(Class targetClass, Object message) {
+        logger.log(new LogEntry(LogEntry.LogEntryLevel.TRACE, () -> targetClass, null, () -> message));
+    }
+
+    public static void trace(Class targetClass, Throwable throwable) {
+        logger.log(new LogEntry(LogEntry.LogEntryLevel.TRACE, () -> targetClass, throwable, null));
+    }
+
+    public static void trace(Throwable t, Supplier<Object> message) {
+        logger.log(new LogEntry(LogEntry.LogEntryLevel.TRACE, memoize(() -> getCurrentClass()), t, memoize(message)));
+    }
+
+    public static void trace(Throwable t, Object message) {
+        logger.log(new LogEntry(LogEntry.LogEntryLevel.TRACE, memoize(() -> getCurrentClass()), t, () -> message));
+    }
+
+    public static void trace(Supplier<Object> message) {
+        logger.log(new LogEntry(LogEntry.LogEntryLevel.TRACE, memoize(() -> getCurrentClass()), null, memoize(message)));
+    }
+
+    public static void trace(Object message) {
+        logger.log(new LogEntry(LogEntry.LogEntryLevel.TRACE, memoize(() -> getCurrentClass()), null, () -> message));
     }
 
     // DEBUG
@@ -87,6 +123,43 @@ public class LOG {
         logger.log(new LogEntry(LogEntry.LogEntryLevel.INFO, memoize(() -> getCurrentClass()), null, () -> message));
     }
 
+    // WARN
+    public static void warn(Class targetClass, Throwable t, Supplier<Object> message) {
+        logger.log(new LogEntry(LogEntry.LogEntryLevel.WARN, () -> targetClass, t, memoize(message)));
+    }
+
+    public static void warn(Class targetClass, Throwable t, Object message) {
+        logger.log(new LogEntry(LogEntry.LogEntryLevel.WARN, () -> targetClass, t, () -> message));
+    }
+
+    public static void warn(Class targetClass, Supplier<Object> message) {
+        logger.log(new LogEntry(LogEntry.LogEntryLevel.WARN, () -> targetClass, null, memoize(message)));
+    }
+
+    public static void warn(Class targetClass, Object message) {
+        logger.log(new LogEntry(LogEntry.LogEntryLevel.WARN, () -> targetClass, null, () -> message));
+    }
+
+    public static void warn(Class targetClass, Throwable throwable) {
+        logger.log(new LogEntry(LogEntry.LogEntryLevel.WARN, () -> targetClass, throwable, null));
+    }
+
+    public static void warn(Throwable t, Supplier<Object> message) {
+        logger.log(new LogEntry(LogEntry.LogEntryLevel.WARN, memoize(() -> getCurrentClass()), t, memoize(message)));
+    }
+
+    public static void warn(Throwable t, Object message) {
+        logger.log(new LogEntry(LogEntry.LogEntryLevel.WARN, memoize(() -> getCurrentClass()), t, () -> message));
+    }
+
+    public static void warn(Supplier<Object> message) {
+        logger.log(new LogEntry(LogEntry.LogEntryLevel.WARN, memoize(() -> getCurrentClass()), null, memoize(message)));
+    }
+
+    public static void warn(Object message) {
+        logger.log(new LogEntry(LogEntry.LogEntryLevel.WARN, memoize(() -> getCurrentClass()), null, () -> message));
+    }
+
     // ERROR
     public static void error(Class targetClass, Throwable t, Supplier<Object> message) {
         logger.log(new LogEntry(LogEntry.LogEntryLevel.ERROR, () -> targetClass, t, memoize(message)));
@@ -122,43 +195,6 @@ public class LOG {
 
     public static void error(Object message) {
         logger.log(new LogEntry(LogEntry.LogEntryLevel.ERROR, memoize(() -> getCurrentClass()), null, () -> message));
-    }
-
-    // FATAL
-    public static void fatal(Class targetClass, Throwable t, Supplier<Object> message) {
-        logger.log(new LogEntry(LogEntry.LogEntryLevel.FATAL, () -> targetClass, t, memoize(message)));
-    }
-
-    public static void fatal(Class targetClass, Throwable t, Object message) {
-        logger.log(new LogEntry(LogEntry.LogEntryLevel.FATAL, () -> targetClass, t, () -> message));
-    }
-
-    public static void fatal(Class targetClass, Supplier<Object> message) {
-        logger.log(new LogEntry(LogEntry.LogEntryLevel.FATAL, () -> targetClass, null, memoize(message)));
-    }
-
-    public static void fatal(Class targetClass, Object message) {
-        logger.log(new LogEntry(LogEntry.LogEntryLevel.FATAL, () -> targetClass, null, () -> message));
-    }
-
-    public static void fatal(Class targetClass, Throwable throwable) {
-        logger.log(new LogEntry(LogEntry.LogEntryLevel.FATAL, () -> targetClass, throwable, null));
-    }
-
-    public static void fatal(Throwable t, Supplier<Object> message) {
-        logger.log(new LogEntry(LogEntry.LogEntryLevel.FATAL, memoize(() -> getCurrentClass()), t, memoize(message)));
-    }
-
-    public static void fatal(Throwable t, Object message) {
-        logger.log(new LogEntry(LogEntry.LogEntryLevel.FATAL, memoize(() -> getCurrentClass()), t, () -> message));
-    }
-
-    public static void fatal(Supplier<Object> message) {
-        logger.log(new LogEntry(LogEntry.LogEntryLevel.FATAL, memoize(() -> getCurrentClass()), null, memoize(message)));
-    }
-
-    public static void fatal(Object message) {
-        logger.log(new LogEntry(LogEntry.LogEntryLevel.FATAL, memoize(() -> getCurrentClass()), null, () -> message));
     }
 
     /////////////////////////////////////////

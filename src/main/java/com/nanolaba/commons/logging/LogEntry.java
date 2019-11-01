@@ -5,7 +5,7 @@ import java.util.function.Supplier;
 public class LogEntry {
 
     public enum LogEntryLevel {
-        DEBUG, INFO, ERROR, FATAL
+        TRACE, DEBUG, INFO, WARN, ERROR
     }
 
     private final LogEntryLevel level;

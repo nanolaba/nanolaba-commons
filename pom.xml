@@ -4,7 +4,7 @@
     <groupId>com.nanolaba</groupId>
     <artifactId>nanolaba-commons</artifactId>
     <name>nanolaba-commons</name>
-    <version>0.0.40</version>
+    <version>0.0.41</version>
     <packaging>jar</packaging>
 
     <properties>
@@ -15,6 +15,7 @@
         <mockito.version>3.1.0</mockito.version>
 
         <spring.version>5.2.0.RELEASE</spring.version>
+        <slf4j.version>1.7.25</slf4j.version>
         <commons-dbcp.version>2.5.0</commons-dbcp.version>
         <commons-io.version>2.6</commons-io.version>
         <commons-collections.version>4.2</commons-collections.version>
@@ -115,6 +116,16 @@
             <artifactId>spring-core</artifactId>
             <version>${spring.version}</version>
             <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>${slf4j.version}</version>
         </dependency>
 
     </dependencies>
