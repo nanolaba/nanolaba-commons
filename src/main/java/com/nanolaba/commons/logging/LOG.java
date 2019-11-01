@@ -30,6 +30,10 @@ public class LOG {
         logger.log(new LogEntry(LogEntry.LogEntryLevel.DEBUG, () -> targetClass, null, () -> message));
     }
 
+    public static void debug(Class targetClass, Throwable throwable) {
+        logger.log(new LogEntry(LogEntry.LogEntryLevel.DEBUG, () -> targetClass, throwable, null));
+    }
+
     public static void debug(Throwable t, Supplier<Object> message) {
         logger.log(new LogEntry(LogEntry.LogEntryLevel.DEBUG, memoize(() -> getCurrentClass()), t, memoize(message)));
     }
@@ -61,6 +65,10 @@ public class LOG {
 
     public static void info(Class targetClass, Object message) {
         logger.log(new LogEntry(LogEntry.LogEntryLevel.INFO, () -> targetClass, null, () -> message));
+    }
+
+    public static void info(Class targetClass, Throwable throwable) {
+        logger.log(new LogEntry(LogEntry.LogEntryLevel.INFO, () -> targetClass, throwable, null));
     }
 
     public static void info(Throwable t, Supplier<Object> message) {
@@ -96,6 +104,10 @@ public class LOG {
         logger.log(new LogEntry(LogEntry.LogEntryLevel.ERROR, () -> targetClass, null, () -> message));
     }
 
+    public static void error(Class targetClass, Throwable throwable) {
+        logger.log(new LogEntry(LogEntry.LogEntryLevel.ERROR, () -> targetClass, throwable, null));
+    }
+
     public static void error(Throwable t, Supplier<Object> message) {
         logger.log(new LogEntry(LogEntry.LogEntryLevel.ERROR, memoize(() -> getCurrentClass()), t, memoize(message)));
     }
@@ -127,6 +139,10 @@ public class LOG {
 
     public static void fatal(Class targetClass, Object message) {
         logger.log(new LogEntry(LogEntry.LogEntryLevel.FATAL, () -> targetClass, null, () -> message));
+    }
+
+    public static void fatal(Class targetClass, Throwable throwable) {
+        logger.log(new LogEntry(LogEntry.LogEntryLevel.FATAL, () -> targetClass, throwable, null));
     }
 
     public static void fatal(Throwable t, Supplier<Object> message) {
