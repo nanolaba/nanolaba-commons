@@ -49,6 +49,14 @@ public class LOG {
         logger.log(new LogEntry(LogEntry.LogEntryLevel.TRACE, memoize(() -> getCurrentClass()), null, () -> message));
     }
 
+    public static boolean isTraceEnabled(Class targetClass) {
+        return logger.isEnabled(LogEntry.LogEntryLevel.TRACE, () -> targetClass);
+    }
+
+    public static boolean isTraceEnabled() {
+        return logger.isEnabled(LogEntry.LogEntryLevel.TRACE, memoize(() -> getCurrentClass()));
+    }
+
     // DEBUG
     public static void debug(Class targetClass, Throwable t, Supplier<Object> message) {
         logger.log(new LogEntry(LogEntry.LogEntryLevel.DEBUG, () -> targetClass, t, memoize(message)));
@@ -84,6 +92,14 @@ public class LOG {
 
     public static void debug(Object message) {
         logger.log(new LogEntry(LogEntry.LogEntryLevel.DEBUG, memoize(() -> getCurrentClass()), null, () -> message));
+    }
+
+    public static boolean isDebugEnabled(Class targetClass) {
+        return logger.isEnabled(LogEntry.LogEntryLevel.DEBUG, () -> targetClass);
+    }
+
+    public static boolean isDebugEnabled() {
+        return logger.isEnabled(LogEntry.LogEntryLevel.DEBUG, memoize(() -> getCurrentClass()));
     }
 
     // INFO
@@ -123,6 +139,14 @@ public class LOG {
         logger.log(new LogEntry(LogEntry.LogEntryLevel.INFO, memoize(() -> getCurrentClass()), null, () -> message));
     }
 
+    public static boolean isInfoEnabled(Class targetClass) {
+        return logger.isEnabled(LogEntry.LogEntryLevel.INFO, () -> targetClass);
+    }
+
+    public static boolean isInfoEnabled() {
+        return logger.isEnabled(LogEntry.LogEntryLevel.INFO, memoize(() -> getCurrentClass()));
+    }
+
     // WARN
     public static void warn(Class targetClass, Throwable t, Supplier<Object> message) {
         logger.log(new LogEntry(LogEntry.LogEntryLevel.WARN, () -> targetClass, t, memoize(message)));
@@ -160,6 +184,14 @@ public class LOG {
         logger.log(new LogEntry(LogEntry.LogEntryLevel.WARN, memoize(() -> getCurrentClass()), null, () -> message));
     }
 
+    public static boolean isWarnEnabled(Class targetClass) {
+        return logger.isEnabled(LogEntry.LogEntryLevel.WARN, () -> targetClass);
+    }
+
+    public static boolean isWarnEnabled() {
+        return logger.isEnabled(LogEntry.LogEntryLevel.WARN, memoize(() -> getCurrentClass()));
+    }
+
     // ERROR
     public static void error(Class targetClass, Throwable t, Supplier<Object> message) {
         logger.log(new LogEntry(LogEntry.LogEntryLevel.ERROR, () -> targetClass, t, memoize(message)));
@@ -195,6 +227,14 @@ public class LOG {
 
     public static void error(Object message) {
         logger.log(new LogEntry(LogEntry.LogEntryLevel.ERROR, memoize(() -> getCurrentClass()), null, () -> message));
+    }
+
+    public static boolean isErrorEnabled(Class targetClass) {
+        return logger.isEnabled(LogEntry.LogEntryLevel.ERROR, () -> targetClass);
+    }
+
+    public static boolean isErrorEnabled() {
+        return logger.isEnabled(LogEntry.LogEntryLevel.ERROR, memoize(() -> getCurrentClass()));
     }
 
     /////////////////////////////////////////

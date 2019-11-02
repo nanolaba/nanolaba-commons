@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+import java.util.function.Supplier;
 
 
 public class Slf4jLogger implements ILogger {
@@ -14,8 +15,7 @@ public class Slf4jLogger implements ILogger {
     @Override
     public void log(LogEntry entry) {
 
-        Class sourceClass = entry.getSourceClass();
-        Logger logger = loggers.computeIfAbsent(sourceClass, aClass -> LoggerFactory.getLogger(aClass));
+        Logger logger = loggers.computeIfAbsent(entry.getSourceClass(), aClass -> LoggerFactory.getLogger(aClass));
 
         switch (entry.getLevel()) {
             case TRACE:
@@ -36,6 +36,26 @@ public class Slf4jLogger implements ILogger {
             default:
                 info(logger, entry);
 
+        }
+    }
+
+    @Override
+    public boolean isEnabled(LogEntry.LogEntryLevel level, Supplier<Class> sourceClass) {
+        Logger logger = loggers.computeIfAbsent(sourceClass == null ? null : sourceClass.get(), aClass -> LoggerFactory.getLogger(aClass));
+
+        switch (level) {
+            case TRACE:
+                return logger.isTraceEnabled();
+            case DEBUG:
+                return logger.isDebugEnabled();
+            case INFO:
+                return logger.isInfoEnabled();
+            case WARN:
+                return logger.isWarnEnabled();
+            case ERROR:
+                return logger.isErrorEnabled();
+            default:
+                return logger.isInfoEnabled();
         }
     }
 

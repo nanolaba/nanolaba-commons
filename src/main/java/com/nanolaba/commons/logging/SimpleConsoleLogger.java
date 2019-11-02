@@ -1,6 +1,7 @@
 package com.nanolaba.commons.logging;
 
 import java.io.PrintStream;
+import java.util.function.Supplier;
 
 public class SimpleConsoleLogger implements ILogger {
     @Override
@@ -29,5 +30,10 @@ public class SimpleConsoleLogger implements ILogger {
             out.println();
         }
 
+    }
+
+    @Override
+    public boolean isEnabled(LogEntry.LogEntryLevel level, Supplier<Class> sourceCLass) {
+        return true;
     }
 }
