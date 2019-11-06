@@ -29,6 +29,10 @@ public class LOG {
         logger.log(new LogEntry(LogEntry.LogEntryLevel.TRACE, () -> targetClass, null, () -> message));
     }
 
+    public static void trace(Class targetClass, String message, Object... args) {
+        logger.log(new LogEntry(LogEntry.LogEntryLevel.TRACE, () -> targetClass, null, () -> message, args));
+    }
+
     public static void trace(Class targetClass, Throwable throwable) {
         logger.log(new LogEntry(LogEntry.LogEntryLevel.TRACE, () -> targetClass, throwable, null));
     }
@@ -51,6 +55,10 @@ public class LOG {
 
     public static void trace(Object message) {
         logger.log(new LogEntry(LogEntry.LogEntryLevel.TRACE, memoize(() -> getCurrentClass()), null, () -> message));
+    }
+
+    public static void trace(String message, Object... args) {
+        logger.log(new LogEntry(LogEntry.LogEntryLevel.TRACE, memoize(() -> getCurrentClass()), null, () -> message, args));
     }
 
     public static boolean isTraceEnabled(Class targetClass) {
@@ -78,6 +86,10 @@ public class LOG {
         logger.log(new LogEntry(LogEntry.LogEntryLevel.DEBUG, () -> targetClass, null, () -> message));
     }
 
+    public static void debug(Class targetClass, String message, Object... args) {
+        logger.log(new LogEntry(LogEntry.LogEntryLevel.DEBUG, () -> targetClass, null, () -> message, args));
+    }
+
     public static void debug(Class targetClass, Throwable throwable) {
         logger.log(new LogEntry(LogEntry.LogEntryLevel.DEBUG, () -> targetClass, throwable, null));
     }
@@ -100,6 +112,10 @@ public class LOG {
 
     public static void debug(Object message) {
         logger.log(new LogEntry(LogEntry.LogEntryLevel.DEBUG, memoize(() -> getCurrentClass()), null, () -> message));
+    }
+
+    public static void debug(String message, Object... args) {
+        logger.log(new LogEntry(LogEntry.LogEntryLevel.DEBUG, memoize(() -> getCurrentClass()), null, () -> message, args));
     }
 
     public static boolean isDebugEnabled(Class targetClass) {
@@ -127,6 +143,10 @@ public class LOG {
         logger.log(new LogEntry(LogEntry.LogEntryLevel.INFO, () -> targetClass, null, () -> message));
     }
 
+    public static void info(Class targetClass, String message, Object... args) {
+        logger.log(new LogEntry(LogEntry.LogEntryLevel.INFO, () -> targetClass, null, () -> message, args));
+    }
+
     public static void info(Class targetClass, Throwable throwable) {
         logger.log(new LogEntry(LogEntry.LogEntryLevel.INFO, () -> targetClass, throwable, null));
     }
@@ -149,6 +169,10 @@ public class LOG {
 
     public static void info(Object message) {
         logger.log(new LogEntry(LogEntry.LogEntryLevel.INFO, memoize(() -> getCurrentClass()), null, () -> message));
+    }
+
+    public static void info(String message, Object... args) {
+        logger.log(new LogEntry(LogEntry.LogEntryLevel.INFO, memoize(() -> getCurrentClass()), null, () -> message, args));
     }
 
     public static boolean isInfoEnabled(Class targetClass) {
@@ -176,6 +200,10 @@ public class LOG {
         logger.log(new LogEntry(LogEntry.LogEntryLevel.WARN, () -> targetClass, null, () -> message));
     }
 
+    public static void warn(Class targetClass, String message, Object... args) {
+        logger.log(new LogEntry(LogEntry.LogEntryLevel.WARN, () -> targetClass, null, () -> message, args));
+    }
+
     public static void warn(Class targetClass, Throwable throwable) {
         logger.log(new LogEntry(LogEntry.LogEntryLevel.WARN, () -> targetClass, throwable, null));
     }
@@ -198,6 +226,10 @@ public class LOG {
 
     public static void warn(Object message) {
         logger.log(new LogEntry(LogEntry.LogEntryLevel.WARN, memoize(() -> getCurrentClass()), null, () -> message));
+    }
+
+    public static void warn(String message, Object... args) {
+        logger.log(new LogEntry(LogEntry.LogEntryLevel.WARN, memoize(() -> getCurrentClass()), null, () -> message, args));
     }
 
     public static boolean isWarnEnabled(Class targetClass) {
@@ -225,6 +257,10 @@ public class LOG {
         logger.log(new LogEntry(LogEntry.LogEntryLevel.ERROR, () -> targetClass, null, () -> message));
     }
 
+    public static void error(Class targetClass, String message, Object... args) {
+        logger.log(new LogEntry(LogEntry.LogEntryLevel.ERROR, () -> targetClass, null, () -> message, args));
+    }
+
     public static void error(Class targetClass, Throwable throwable) {
         logger.log(new LogEntry(LogEntry.LogEntryLevel.ERROR, () -> targetClass, throwable, null));
     }
@@ -247,6 +283,10 @@ public class LOG {
 
     public static void error(Object message) {
         logger.log(new LogEntry(LogEntry.LogEntryLevel.ERROR, memoize(() -> getCurrentClass()), null, () -> message));
+    }
+
+    public static void error(String message, Object... args) {
+        logger.log(new LogEntry(LogEntry.LogEntryLevel.ERROR, memoize(() -> getCurrentClass()), null, () -> message, args));
     }
 
     public static boolean isErrorEnabled(Class targetClass) {

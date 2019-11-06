@@ -15,28 +15,31 @@ public class LOGTest {
         LOG.init(entry -> message.setValue(entry.toString()));
 
         LOG.debug(LOGTest.class, new RuntimeException("ex"), () -> "ex1");
-        Assert.assertEquals("LogEntry{level=DEBUG, sourceClass=com.nanolaba.commons.logging.LOGTest, throwable=java.lang.RuntimeException: ex, message=ex1}", message.getValue());
+        Assert.assertEquals("LogEntry{level=DEBUG, sourceClass=com.nanolaba.commons.logging.LOGTest, throwable=java.lang.RuntimeException: ex, message=ex1, args=[]}", message.getValue());
 
         LOG.debug(LOGTest.class, new RuntimeException("ex"), "ex2");
-        Assert.assertEquals("LogEntry{level=DEBUG, sourceClass=com.nanolaba.commons.logging.LOGTest, throwable=java.lang.RuntimeException: ex, message=ex2}", message.getValue());
+        Assert.assertEquals("LogEntry{level=DEBUG, sourceClass=com.nanolaba.commons.logging.LOGTest, throwable=java.lang.RuntimeException: ex, message=ex2, args=[]}", message.getValue());
 
         LOG.debug(LOGTest.class, () -> "ex3");
-        Assert.assertEquals("LogEntry{level=DEBUG, sourceClass=com.nanolaba.commons.logging.LOGTest, throwable=null, message=ex3}", message.getValue());
+        Assert.assertEquals("LogEntry{level=DEBUG, sourceClass=com.nanolaba.commons.logging.LOGTest, throwable=null, message=ex3, args=[]}", message.getValue());
 
         LOG.debug(LOGTest.class, "ex4");
-        Assert.assertEquals("LogEntry{level=DEBUG, sourceClass=com.nanolaba.commons.logging.LOGTest, throwable=null, message=ex4}", message.getValue());
+        Assert.assertEquals("LogEntry{level=DEBUG, sourceClass=com.nanolaba.commons.logging.LOGTest, throwable=null, message=ex4, args=[]}", message.getValue());
 
         LOG.debug(() -> "ex5");
-        Assert.assertEquals("LogEntry{level=DEBUG, sourceClass=com.nanolaba.commons.logging.LOGTest, throwable=null, message=ex5}", message.getValue());
+        Assert.assertEquals("LogEntry{level=DEBUG, sourceClass=com.nanolaba.commons.logging.LOGTest, throwable=null, message=ex5, args=[]}", message.getValue());
 
         LOG.debug("ex6");
-        Assert.assertEquals("LogEntry{level=DEBUG, sourceClass=com.nanolaba.commons.logging.LOGTest, throwable=null, message=ex6}", message.getValue());
+        Assert.assertEquals("LogEntry{level=DEBUG, sourceClass=com.nanolaba.commons.logging.LOGTest, throwable=null, message=ex6, args=[]}", message.getValue());
 
         LOG.debug(new RuntimeException("ex7"), () -> "ex7");
-        Assert.assertEquals("LogEntry{level=DEBUG, sourceClass=com.nanolaba.commons.logging.LOGTest, throwable=java.lang.RuntimeException: ex7, message=ex7}", message.getValue());
+        Assert.assertEquals("LogEntry{level=DEBUG, sourceClass=com.nanolaba.commons.logging.LOGTest, throwable=java.lang.RuntimeException: ex7, message=ex7, args=[]}", message.getValue());
 
         LOG.debug(new RuntimeException("ex8"), "ex8");
-        Assert.assertEquals("LogEntry{level=DEBUG, sourceClass=com.nanolaba.commons.logging.LOGTest, throwable=java.lang.RuntimeException: ex8, message=ex8}", message.getValue());
+        Assert.assertEquals("LogEntry{level=DEBUG, sourceClass=com.nanolaba.commons.logging.LOGTest, throwable=java.lang.RuntimeException: ex8, message=ex8, args=[]}", message.getValue());
+
+        LOG.debug("ex9 {}", "asd", 123);
+        Assert.assertEquals("LogEntry{level=DEBUG, sourceClass=com.nanolaba.commons.logging.LOGTest, throwable=null, message=ex9 {}, args=[asd, 123]}", message.getValue());
     }
 
 
@@ -48,28 +51,31 @@ public class LOGTest {
         LOG.init(entry -> message.setValue(entry.toString()));
 
         LOG.info(LOGTest.class, new RuntimeException("ex"), () -> "ex1");
-        Assert.assertEquals("LogEntry{level=INFO, sourceClass=com.nanolaba.commons.logging.LOGTest, throwable=java.lang.RuntimeException: ex, message=ex1}", message.getValue());
+        Assert.assertEquals("LogEntry{level=INFO, sourceClass=com.nanolaba.commons.logging.LOGTest, throwable=java.lang.RuntimeException: ex, message=ex1, args=[]}", message.getValue());
 
         LOG.info(LOGTest.class, new RuntimeException("ex"), "ex2");
-        Assert.assertEquals("LogEntry{level=INFO, sourceClass=com.nanolaba.commons.logging.LOGTest, throwable=java.lang.RuntimeException: ex, message=ex2}", message.getValue());
+        Assert.assertEquals("LogEntry{level=INFO, sourceClass=com.nanolaba.commons.logging.LOGTest, throwable=java.lang.RuntimeException: ex, message=ex2, args=[]}", message.getValue());
 
         LOG.info(LOGTest.class, () -> "ex3");
-        Assert.assertEquals("LogEntry{level=INFO, sourceClass=com.nanolaba.commons.logging.LOGTest, throwable=null, message=ex3}", message.getValue());
+        Assert.assertEquals("LogEntry{level=INFO, sourceClass=com.nanolaba.commons.logging.LOGTest, throwable=null, message=ex3, args=[]}", message.getValue());
 
         LOG.info(LOGTest.class, "ex4");
-        Assert.assertEquals("LogEntry{level=INFO, sourceClass=com.nanolaba.commons.logging.LOGTest, throwable=null, message=ex4}", message.getValue());
+        Assert.assertEquals("LogEntry{level=INFO, sourceClass=com.nanolaba.commons.logging.LOGTest, throwable=null, message=ex4, args=[]}", message.getValue());
 
         LOG.info(() -> "ex5");
-        Assert.assertEquals("LogEntry{level=INFO, sourceClass=com.nanolaba.commons.logging.LOGTest, throwable=null, message=ex5}", message.getValue());
+        Assert.assertEquals("LogEntry{level=INFO, sourceClass=com.nanolaba.commons.logging.LOGTest, throwable=null, message=ex5, args=[]}", message.getValue());
 
         LOG.info("ex6");
-        Assert.assertEquals("LogEntry{level=INFO, sourceClass=com.nanolaba.commons.logging.LOGTest, throwable=null, message=ex6}", message.getValue());
+        Assert.assertEquals("LogEntry{level=INFO, sourceClass=com.nanolaba.commons.logging.LOGTest, throwable=null, message=ex6, args=[]}", message.getValue());
 
         LOG.info(new RuntimeException("ex7"), () -> "ex7");
-        Assert.assertEquals("LogEntry{level=INFO, sourceClass=com.nanolaba.commons.logging.LOGTest, throwable=java.lang.RuntimeException: ex7, message=ex7}", message.getValue());
+        Assert.assertEquals("LogEntry{level=INFO, sourceClass=com.nanolaba.commons.logging.LOGTest, throwable=java.lang.RuntimeException: ex7, message=ex7, args=[]}", message.getValue());
 
         LOG.info(new RuntimeException("ex8"), "ex8");
-        Assert.assertEquals("LogEntry{level=INFO, sourceClass=com.nanolaba.commons.logging.LOGTest, throwable=java.lang.RuntimeException: ex8, message=ex8}", message.getValue());
+        Assert.assertEquals("LogEntry{level=INFO, sourceClass=com.nanolaba.commons.logging.LOGTest, throwable=java.lang.RuntimeException: ex8, message=ex8, args=[]}", message.getValue());
+
+        LOG.info("ex9 {}", "asd", 123);
+        Assert.assertEquals("LogEntry{level=INFO, sourceClass=com.nanolaba.commons.logging.LOGTest, throwable=null, message=ex9 {}, args=[asd, 123]}", message.getValue());
     }
 
 
@@ -81,28 +87,31 @@ public class LOGTest {
         LOG.init(entry -> message.setValue(entry.toString()));
 
         LOG.error(LOGTest.class, new RuntimeException("ex"), () -> "ex1");
-        Assert.assertEquals("LogEntry{level=ERROR, sourceClass=com.nanolaba.commons.logging.LOGTest, throwable=java.lang.RuntimeException: ex, message=ex1}", message.getValue());
+        Assert.assertEquals("LogEntry{level=ERROR, sourceClass=com.nanolaba.commons.logging.LOGTest, throwable=java.lang.RuntimeException: ex, message=ex1, args=[]}", message.getValue());
 
         LOG.error(LOGTest.class, new RuntimeException("ex"), "ex2");
-        Assert.assertEquals("LogEntry{level=ERROR, sourceClass=com.nanolaba.commons.logging.LOGTest, throwable=java.lang.RuntimeException: ex, message=ex2}", message.getValue());
+        Assert.assertEquals("LogEntry{level=ERROR, sourceClass=com.nanolaba.commons.logging.LOGTest, throwable=java.lang.RuntimeException: ex, message=ex2, args=[]}", message.getValue());
 
         LOG.error(LOGTest.class, () -> "ex3");
-        Assert.assertEquals("LogEntry{level=ERROR, sourceClass=com.nanolaba.commons.logging.LOGTest, throwable=null, message=ex3}", message.getValue());
+        Assert.assertEquals("LogEntry{level=ERROR, sourceClass=com.nanolaba.commons.logging.LOGTest, throwable=null, message=ex3, args=[]}", message.getValue());
 
         LOG.error(LOGTest.class, "ex4");
-        Assert.assertEquals("LogEntry{level=ERROR, sourceClass=com.nanolaba.commons.logging.LOGTest, throwable=null, message=ex4}", message.getValue());
+        Assert.assertEquals("LogEntry{level=ERROR, sourceClass=com.nanolaba.commons.logging.LOGTest, throwable=null, message=ex4, args=[]}", message.getValue());
 
         LOG.error(() -> "ex5");
-        Assert.assertEquals("LogEntry{level=ERROR, sourceClass=com.nanolaba.commons.logging.LOGTest, throwable=null, message=ex5}", message.getValue());
+        Assert.assertEquals("LogEntry{level=ERROR, sourceClass=com.nanolaba.commons.logging.LOGTest, throwable=null, message=ex5, args=[]}", message.getValue());
 
         LOG.error("ex6");
-        Assert.assertEquals("LogEntry{level=ERROR, sourceClass=com.nanolaba.commons.logging.LOGTest, throwable=null, message=ex6}", message.getValue());
+        Assert.assertEquals("LogEntry{level=ERROR, sourceClass=com.nanolaba.commons.logging.LOGTest, throwable=null, message=ex6, args=[]}", message.getValue());
 
         LOG.error(new RuntimeException("ex7"), () -> "ex7");
-        Assert.assertEquals("LogEntry{level=ERROR, sourceClass=com.nanolaba.commons.logging.LOGTest, throwable=java.lang.RuntimeException: ex7, message=ex7}", message.getValue());
+        Assert.assertEquals("LogEntry{level=ERROR, sourceClass=com.nanolaba.commons.logging.LOGTest, throwable=java.lang.RuntimeException: ex7, message=ex7, args=[]}", message.getValue());
 
         LOG.error(new RuntimeException("ex8"), "ex8");
-        Assert.assertEquals("LogEntry{level=ERROR, sourceClass=com.nanolaba.commons.logging.LOGTest, throwable=java.lang.RuntimeException: ex8, message=ex8}", message.getValue());
+        Assert.assertEquals("LogEntry{level=ERROR, sourceClass=com.nanolaba.commons.logging.LOGTest, throwable=java.lang.RuntimeException: ex8, message=ex8, args=[]}", message.getValue());
+
+        LOG.error("ex9 {}", "asd", 123);
+        Assert.assertEquals("LogEntry{level=ERROR, sourceClass=com.nanolaba.commons.logging.LOGTest, throwable=null, message=ex9 {}, args=[asd, 123]}", message.getValue());
     }
 
 
@@ -114,28 +123,31 @@ public class LOGTest {
         LOG.init(entry -> message.setValue(entry.toString()));
 
         LOG.warn(LOGTest.class, new RuntimeException("ex"), () -> "ex1");
-        Assert.assertEquals("LogEntry{level=WARN, sourceClass=com.nanolaba.commons.logging.LOGTest, throwable=java.lang.RuntimeException: ex, message=ex1}", message.getValue());
+        Assert.assertEquals("LogEntry{level=WARN, sourceClass=com.nanolaba.commons.logging.LOGTest, throwable=java.lang.RuntimeException: ex, message=ex1, args=[]}", message.getValue());
 
         LOG.warn(LOGTest.class, new RuntimeException("ex"), "ex2");
-        Assert.assertEquals("LogEntry{level=WARN, sourceClass=com.nanolaba.commons.logging.LOGTest, throwable=java.lang.RuntimeException: ex, message=ex2}", message.getValue());
+        Assert.assertEquals("LogEntry{level=WARN, sourceClass=com.nanolaba.commons.logging.LOGTest, throwable=java.lang.RuntimeException: ex, message=ex2, args=[]}", message.getValue());
 
         LOG.warn(LOGTest.class, () -> "ex3");
-        Assert.assertEquals("LogEntry{level=WARN, sourceClass=com.nanolaba.commons.logging.LOGTest, throwable=null, message=ex3}", message.getValue());
+        Assert.assertEquals("LogEntry{level=WARN, sourceClass=com.nanolaba.commons.logging.LOGTest, throwable=null, message=ex3, args=[]}", message.getValue());
 
         LOG.warn(LOGTest.class, "ex4");
-        Assert.assertEquals("LogEntry{level=WARN, sourceClass=com.nanolaba.commons.logging.LOGTest, throwable=null, message=ex4}", message.getValue());
+        Assert.assertEquals("LogEntry{level=WARN, sourceClass=com.nanolaba.commons.logging.LOGTest, throwable=null, message=ex4, args=[]}", message.getValue());
 
         LOG.warn(() -> "ex5");
-        Assert.assertEquals("LogEntry{level=WARN, sourceClass=com.nanolaba.commons.logging.LOGTest, throwable=null, message=ex5}", message.getValue());
+        Assert.assertEquals("LogEntry{level=WARN, sourceClass=com.nanolaba.commons.logging.LOGTest, throwable=null, message=ex5, args=[]}", message.getValue());
 
         LOG.warn("ex6");
-        Assert.assertEquals("LogEntry{level=WARN, sourceClass=com.nanolaba.commons.logging.LOGTest, throwable=null, message=ex6}", message.getValue());
+        Assert.assertEquals("LogEntry{level=WARN, sourceClass=com.nanolaba.commons.logging.LOGTest, throwable=null, message=ex6, args=[]}", message.getValue());
 
         LOG.warn(new RuntimeException("ex7"), () -> "ex7");
-        Assert.assertEquals("LogEntry{level=WARN, sourceClass=com.nanolaba.commons.logging.LOGTest, throwable=java.lang.RuntimeException: ex7, message=ex7}", message.getValue());
+        Assert.assertEquals("LogEntry{level=WARN, sourceClass=com.nanolaba.commons.logging.LOGTest, throwable=java.lang.RuntimeException: ex7, message=ex7, args=[]}", message.getValue());
 
         LOG.warn(new RuntimeException("ex8"), "ex8");
-        Assert.assertEquals("LogEntry{level=WARN, sourceClass=com.nanolaba.commons.logging.LOGTest, throwable=java.lang.RuntimeException: ex8, message=ex8}", message.getValue());
+        Assert.assertEquals("LogEntry{level=WARN, sourceClass=com.nanolaba.commons.logging.LOGTest, throwable=java.lang.RuntimeException: ex8, message=ex8, args=[]}", message.getValue());
+
+        LOG.warn("ex9 {}", "asd", 123);
+        Assert.assertEquals("LogEntry{level=WARN, sourceClass=com.nanolaba.commons.logging.LOGTest, throwable=null, message=ex9 {}, args=[asd, 123]}", message.getValue());
     }
 
 
@@ -150,7 +162,7 @@ public class LOGTest {
         //lambda
         ((Runnable) () -> {
             LOG.debug("ex6");
-            Assert.assertEquals("LogEntry{level=DEBUG, sourceClass=com.nanolaba.commons.logging.LOGTest, throwable=null, message=ex6}", message.getValue());
+            Assert.assertEquals("LogEntry{level=DEBUG, sourceClass=com.nanolaba.commons.logging.LOGTest, throwable=null, message=ex6, args=[]}", message.getValue());
         }).run();
 
         //anonymous class
@@ -158,7 +170,7 @@ public class LOGTest {
             @Override
             public void run() {
                 LOG.debug("ex7");
-                Assert.assertEquals("LogEntry{level=DEBUG, sourceClass=com.nanolaba.commons.logging.LOGTest, throwable=null, message=ex7}", message.getValue());
+                Assert.assertEquals("LogEntry{level=DEBUG, sourceClass=com.nanolaba.commons.logging.LOGTest, throwable=null, message=ex7, args=[]}", message.getValue());
             }
         }.run();
 
@@ -170,7 +182,7 @@ public class LOGTest {
                     @Override
                     public void run() {
                         LOG.debug("ex8");
-                        Assert.assertEquals("LogEntry{level=DEBUG, sourceClass=com.nanolaba.commons.logging.LOGTest, throwable=null, message=ex8}", message.getValue());
+                        Assert.assertEquals("LogEntry{level=DEBUG, sourceClass=com.nanolaba.commons.logging.LOGTest, throwable=null, message=ex8, args=[]}", message.getValue());
                     }
                 }.run();
             }
@@ -187,7 +199,7 @@ public class LOGTest {
                             @Override
                             public void run() {
                                 LOG.debug("ex9");
-                                Assert.assertEquals("LogEntry{level=DEBUG, sourceClass=com.nanolaba.commons.logging.LOGTest, throwable=null, message=ex9}", message.getValue());
+                                Assert.assertEquals("LogEntry{level=DEBUG, sourceClass=com.nanolaba.commons.logging.LOGTest, throwable=null, message=ex9, args=[]}", message.getValue());
                             }
                         }.run();
                     }
@@ -197,7 +209,7 @@ public class LOGTest {
 
         // named inner class
         new NamedInnerCLass().log("ex10");
-        Assert.assertEquals("LogEntry{level=DEBUG, sourceClass=com.nanolaba.commons.logging.LOGTest, throwable=null, message=ex10}", message.getValue());
+        Assert.assertEquals("LogEntry{level=DEBUG, sourceClass=com.nanolaba.commons.logging.LOGTest, throwable=null, message=ex10, args=[]}", message.getValue());
     }
 
 

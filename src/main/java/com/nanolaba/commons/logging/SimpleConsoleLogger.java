@@ -9,6 +9,7 @@ public class SimpleConsoleLogger implements ILogger {
         LogEntry.LogEntryLevel level = entry.getLevel();
         Class aClass = entry.getSourceClass();
         Object message = entry.getMessage();
+        Object[] args = entry.getArgs();
         Throwable throwable = entry.getThrowable();
 
         PrintStream out = level == LogEntry.LogEntryLevel.ERROR ? System.err : System.out;
@@ -21,7 +22,22 @@ public class SimpleConsoleLogger implements ILogger {
         }
         if (message != null) {
             out.print(" ");
-            out.print(message);
+            if (args == null) {
+                out.print(message);
+            } else {
+                boolean arg = false;
+                int argNumber = 0;
+                for (char c : message.toString().toCharArray()) {
+                    if (c == '{') {
+                        arg = true;
+                        out.print(args[argNumber++]);
+                    } else if (c == '}') {
+                        arg = false;
+                    } else if (!arg) {
+                        out.print(c);
+                    }
+                }
+            }
         }
         if (throwable != null) {
             out.print(" ");

@@ -61,31 +61,51 @@ public class Slf4jLogger implements ILogger {
 
     private void trace(Logger logger, LogEntry entry) {
         if (logger.isTraceEnabled()) {
-            logger.trace(trim(entry.getMessage()), entry.getThrowable());
+            if (entry.getArgs() != null) {
+                logger.trace(trim(entry.getMessage()), entry.getArgs());
+            } else {
+                logger.trace(trim(entry.getMessage()), entry.getThrowable());
+            }
         }
     }
 
     private void debug(Logger logger, LogEntry entry) {
         if (logger.isDebugEnabled()) {
-            logger.debug(trim(entry.getMessage()), entry.getThrowable());
+            if (entry.getArgs() != null) {
+                logger.debug(trim(entry.getMessage()), entry.getArgs());
+            } else {
+                logger.debug(trim(entry.getMessage()), entry.getThrowable());
+            }
         }
     }
 
     private void info(Logger logger, LogEntry entry) {
         if (logger.isInfoEnabled()) {
-            logger.info(trim(entry.getMessage()), entry.getThrowable());
+            if (entry.getArgs() != null) {
+                logger.info(trim(entry.getMessage()), entry.getArgs());
+            } else {
+                logger.info(trim(entry.getMessage()), entry.getThrowable());
+            }
         }
     }
 
     private void warn(Logger logger, LogEntry entry) {
         if (logger.isWarnEnabled()) {
-            logger.warn(trim(entry.getMessage()), entry.getThrowable());
+            if (entry.getArgs() != null) {
+                logger.warn(trim(entry.getMessage()), entry.getArgs());
+            } else {
+                logger.warn(trim(entry.getMessage()), entry.getThrowable());
+            }
         }
     }
 
     private void error(Logger logger, LogEntry entry) {
         if (logger.isErrorEnabled()) {
-            logger.error(trim(entry.getMessage()), entry.getThrowable());
+            if (entry.getArgs() != null) {
+                logger.error(trim(entry.getMessage()), entry.getArgs());
+            } else {
+                logger.error(trim(entry.getMessage()), entry.getThrowable());
+            }
         }
     }
 

@@ -10,15 +10,6 @@ public class Slf4jLoggerTest {
     }
 
     @Test
-    public void testLog() {
-        SimpleConsoleLogger logger = new SimpleConsoleLogger();
-
-        for (LogEntry.LogEntryLevel level : LogEntry.LogEntryLevel.values()) {
-            logger.log(new LogEntry(level, () -> getClass(), new Throwable("test throwable"), () -> "some message"));
-        }
-    }
-
-    @Test
     public void testDebugLog() {
         LOG.debug(Slf4jLoggerTest.class, new RuntimeException("ex"), () -> "ex1");
         LOG.debug(Slf4jLoggerTest.class, new RuntimeException("ex"), "ex2");
@@ -29,5 +20,6 @@ public class Slf4jLoggerTest {
         LOG.debug(new RuntimeException("ex7"), () -> "ex7");
         LOG.debug(new RuntimeException("ex8"), "ex8");
         LOG.debug(new RuntimeException("ex88"));
+        LOG.debug("Some {} message {} with {} args ", "123123", "ASASD", 123);
     }
 }
