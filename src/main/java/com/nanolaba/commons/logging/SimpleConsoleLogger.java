@@ -22,7 +22,7 @@ public class SimpleConsoleLogger implements ILogger {
         }
         if (message != null) {
             out.print(" ");
-            if (args == null) {
+            if (args == null || args.length == 0) {
                 out.print(message);
             } else {
                 boolean arg = false;

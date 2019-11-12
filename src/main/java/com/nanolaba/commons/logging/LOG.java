@@ -45,6 +45,10 @@ public class LOG {
         logger.log(new LogEntry(LogEntry.LogEntryLevel.TRACE, memoize(() -> getCurrentClass()), t, () -> message));
     }
 
+    public static void trace(Object message, Throwable t) {
+        logger.log(new LogEntry(LogEntry.LogEntryLevel.TRACE, memoize(() -> getCurrentClass()), t, () -> message));
+    }
+
     public static void trace(Throwable t) {
         logger.log(new LogEntry(LogEntry.LogEntryLevel.TRACE, memoize(() -> getCurrentClass()), t, null));
     }
@@ -99,6 +103,10 @@ public class LOG {
     }
 
     public static void debug(Throwable t, Object message) {
+        logger.log(new LogEntry(LogEntry.LogEntryLevel.DEBUG, memoize(() -> getCurrentClass()), t, () -> message));
+    }
+
+    public static void debug(Object message, Throwable t) {
         logger.log(new LogEntry(LogEntry.LogEntryLevel.DEBUG, memoize(() -> getCurrentClass()), t, () -> message));
     }
 
@@ -159,6 +167,10 @@ public class LOG {
         logger.log(new LogEntry(LogEntry.LogEntryLevel.INFO, memoize(() -> getCurrentClass()), t, () -> message));
     }
 
+    public static void info(Object message, Throwable t) {
+        logger.log(new LogEntry(LogEntry.LogEntryLevel.INFO, memoize(() -> getCurrentClass()), t, () -> message));
+    }
+
     public static void info(Throwable t) {
         logger.log(new LogEntry(LogEntry.LogEntryLevel.INFO, memoize(() -> getCurrentClass()), t, null));
     }
@@ -216,6 +228,10 @@ public class LOG {
         logger.log(new LogEntry(LogEntry.LogEntryLevel.WARN, memoize(() -> getCurrentClass()), t, () -> message));
     }
 
+    public static void warn(Object message, Throwable t) {
+        logger.log(new LogEntry(LogEntry.LogEntryLevel.WARN, memoize(() -> getCurrentClass()), t, () -> message));
+    }
+
     public static void warn(Throwable t) {
         logger.log(new LogEntry(LogEntry.LogEntryLevel.WARN, memoize(() -> getCurrentClass()), t, null));
     }
@@ -270,6 +286,10 @@ public class LOG {
     }
 
     public static void error(Throwable t, Object message) {
+        logger.log(new LogEntry(LogEntry.LogEntryLevel.ERROR, memoize(() -> getCurrentClass()), t, () -> message));
+    }
+
+    public static void error(Object message, Throwable t) {
         logger.log(new LogEntry(LogEntry.LogEntryLevel.ERROR, memoize(() -> getCurrentClass()), t, () -> message));
     }
 
