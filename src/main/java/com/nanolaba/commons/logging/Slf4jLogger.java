@@ -1,5 +1,6 @@
 package com.nanolaba.commons.logging;
 
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -61,7 +62,7 @@ public class Slf4jLogger implements ILogger {
 
     private void trace(Logger logger, LogEntry entry) {
         if (logger.isTraceEnabled()) {
-            if (entry.getArgs() != null) {
+            if (haveArgs(entry)) {
                 logger.trace(trim(entry.getMessage()), entry.getArgs());
             } else {
                 logger.trace(trim(entry.getMessage()), entry.getThrowable());
@@ -71,7 +72,7 @@ public class Slf4jLogger implements ILogger {
 
     private void debug(Logger logger, LogEntry entry) {
         if (logger.isDebugEnabled()) {
-            if (entry.getArgs() != null) {
+            if (haveArgs(entry)) {
                 logger.debug(trim(entry.getMessage()), entry.getArgs());
             } else {
                 logger.debug(trim(entry.getMessage()), entry.getThrowable());
@@ -81,7 +82,7 @@ public class Slf4jLogger implements ILogger {
 
     private void info(Logger logger, LogEntry entry) {
         if (logger.isInfoEnabled()) {
-            if (entry.getArgs() != null) {
+            if (haveArgs(entry)) {
                 logger.info(trim(entry.getMessage()), entry.getArgs());
             } else {
                 logger.info(trim(entry.getMessage()), entry.getThrowable());
@@ -91,7 +92,7 @@ public class Slf4jLogger implements ILogger {
 
     private void warn(Logger logger, LogEntry entry) {
         if (logger.isWarnEnabled()) {
-            if (entry.getArgs() != null) {
+            if (haveArgs(entry)) {
                 logger.warn(trim(entry.getMessage()), entry.getArgs());
             } else {
                 logger.warn(trim(entry.getMessage()), entry.getThrowable());
@@ -101,7 +102,7 @@ public class Slf4jLogger implements ILogger {
 
     private void error(Logger logger, LogEntry entry) {
         if (logger.isErrorEnabled()) {
-            if (entry.getArgs() != null) {
+            if (haveArgs(entry)) {
                 logger.error(trim(entry.getMessage()), entry.getArgs());
             } else {
                 logger.error(trim(entry.getMessage()), entry.getThrowable());
@@ -111,5 +112,18 @@ public class Slf4jLogger implements ILogger {
 
     private String trim(Object message) {
         return message == null ? "" : message.toString();
+    }
+
+    private boolean haveArgs(LogEntry entry) {
+
+        if (entry.getArgs() != null) {
+            for (Object o : entry.getArgs()) {
+                if (o != null && StringUtils.isNotEmpty(String.valueOf(o))) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
     }
 }
