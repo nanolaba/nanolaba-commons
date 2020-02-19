@@ -1,8 +1,27 @@
 package com.nanolaba.commons;
 
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
+
 public class RussianUtils {
 
     private RussianUtils() {/**/}
+
+
+    public static String formatAge(Date birthdate) {
+        if (birthdate == null) {
+            return "возраст не указан";
+        }
+        Calendar birthDay = new GregorianCalendar();
+        birthDay.setTime(birthdate);
+        Calendar today = new GregorianCalendar();
+        today.setTime(new Date());
+
+        int years = today.get(Calendar.YEAR) - birthDay.get(Calendar.YEAR);
+
+        return NumberNameUtils.format((long) years, "лет", "год", "года");
+    }
 
     public static boolean isNameCorrect(String name) {
         return name != null
