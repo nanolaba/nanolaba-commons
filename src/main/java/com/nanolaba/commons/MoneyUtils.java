@@ -22,6 +22,6 @@ public class MoneyUtils {
         DecimalFormatSymbols symbols = DecimalFormatSymbols.getInstance();
         symbols.setGroupingSeparator(' ');
         DecimalFormat formatter = new DecimalFormat(format, symbols);
-        return formatter.format(amount == null ? BigDecimal.valueOf(0.0) : amount) + (showCurrency ? " руб." : "");
+        return formatter.format(amount == null ? BigDecimal.valueOf(0.0) : amount) + (showCurrency ? " " + Symbols.CURRENCY_RUBLE : "");
     }
 }
