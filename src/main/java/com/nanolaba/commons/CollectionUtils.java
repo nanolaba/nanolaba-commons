@@ -64,4 +64,25 @@ public class CollectionUtils {
         }
         return true;
     }
+
+    public static <T> Set<T> union(Collection<T> first, Collection<T> second) {
+        Set<T> set = new HashSet<T>();
+
+        set.addAll(first);
+        set.addAll(second);
+
+        return set;
+    }
+
+    public static <T> Set<T> intersection(Collection<T> first, Collection<T> second) {
+        Set<T> list = new HashSet<>();
+
+        for (T t : first) {
+            if (second.contains(t)) {
+                list.add(t);
+            }
+        }
+
+        return list;
+    }
 }

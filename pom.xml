@@ -4,7 +4,7 @@
     <groupId>com.nanolaba</groupId>
     <artifactId>nanolaba-commons</artifactId>
     <name>nanolaba-commons</name>
-    <version>0.0.51</version>
+    <version>0.0.52</version>
     <packaging>jar</packaging>
 
     <properties>
