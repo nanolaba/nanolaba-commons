@@ -1,11 +1,13 @@
 package com.nanolaba.commons;
 
+import org.apache.commons.io.Charsets;
 import org.apache.commons.io.IOUtils;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.nio.charset.Charset;
+import java.util.List;
 
 public class ThreadUtil {
 
@@ -25,6 +27,20 @@ public class ThreadUtil {
             Thread.sleep(millis, nanos);
         } catch (InterruptedException e) {
             //ignore
+        }
+    }
+
+    public static List<String> getResourceAsLines(String name) throws IOException {
+        return getResourceAsLines(name, Charset.defaultCharset());
+    }
+
+    public static List<String> getResourceAsLines(String name, String encoding) throws IOException {
+        return getResourceAsLines(name, Charsets.toCharset(encoding));
+    }
+
+    public static List<String> getResourceAsLines(String name, Charset encoding) throws IOException {
+        try (InputStream stream = getResourceAsStream(name)) {
+            return IOUtils.readLines(stream, encoding);
         }
     }
 
