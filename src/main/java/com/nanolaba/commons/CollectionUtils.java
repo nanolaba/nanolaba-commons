@@ -1,18 +1,21 @@
 package com.nanolaba.commons;
 
+import org.apache.commons.lang3.ArrayUtils;
+
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class CollectionUtils {
 
     private CollectionUtils() {/**/}
 
     public static <T> T first(Iterator<T> iterator) {
-        return iterator == null || !iterator.hasNext() ? null : iterator.next();
+        return null == iterator || !iterator.hasNext() ? null : iterator.next();
     }
 
     public static <T> T first(Collection<T> collection) {
 
-        if (collection == null || collection.isEmpty()) {
+        if (null == collection || collection.isEmpty()) {
             return null;
         }
 
@@ -25,7 +28,7 @@ public class CollectionUtils {
 
     public static <T> T first(Collection<T> collection, Comparator<T> comparator) {
 
-        if (collection == null || collection.isEmpty()) {
+        if (null == collection || collection.isEmpty()) {
             return null;
         }
 
@@ -35,7 +38,7 @@ public class CollectionUtils {
     }
 
     public static <T> T last(Collection<T> collection) {
-        if (collection == null || collection.isEmpty()) {
+        if (null == collection || collection.isEmpty()) {
             return null;
         }
         Iterator<T> iterator = collection.iterator();
@@ -47,7 +50,7 @@ public class CollectionUtils {
     }
 
     public static <T> T last(Collection<T> collection, Comparator<T> comparator) {
-        if (collection == null || collection.isEmpty()) {
+        if (null == collection || collection.isEmpty()) {
             return null;
         }
 
@@ -58,7 +61,7 @@ public class CollectionUtils {
 
     public static boolean isEmpty(Collection... collections) {
         for (Collection c : collections) {
-            if (c != null && !c.isEmpty()) {
+            if (null != c && !c.isEmpty()) {
                 return false;
             }
         }
@@ -84,5 +87,13 @@ public class CollectionUtils {
         }
 
         return list;
+    }
+
+    public static <T> List<T> remove(List<T> list, T... elements) {
+        if (elements != null) {
+            return list.stream().filter(e -> !ArrayUtils.contains(elements, e)).collect(Collectors.toList());
+        } else {
+            return list;
+        }
     }
 }
