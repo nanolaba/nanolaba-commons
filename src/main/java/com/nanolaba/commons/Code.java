@@ -1,31 +1,39 @@
 package com.nanolaba.commons;
 
-import java.util.function.Supplier;
-
 public class Code {
 
     private Code() {
     }
 
-    public static void run(Runnable runnable) {
+    public static void run(CodeAction runnable) {
         try {
             runnable.run();
-        } catch (Throwable t) {
+        } catch (Exception t) {
             throw new RuntimeException(t);
         }
     }
 
-    public static <T> T run(Supplier<T> runnable) {
+    public static <T> T run(CodeSupplier<T> runnable) {
         try {
             return runnable.get();
-        } catch (Throwable t) {
+        } catch (Exception t) {
             throw new RuntimeException(t);
         }
     }
 
-    public static void runQuietly(Runnable runnable) {
+    public static void runQuietly(CodeAction runnable) {
         try {
             runnable.run();
-        } catch (Throwable t) {/**/}
+        } catch (Exception t) {/**/}
+    }
+
+    @FunctionalInterface
+    public interface CodeAction {
+        void run() throws Exception;
+    }
+
+    @FunctionalInterface
+    public interface CodeSupplier<T> {
+        T get() throws Exception;
     }
 }

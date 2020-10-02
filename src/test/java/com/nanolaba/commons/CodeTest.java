@@ -12,6 +12,20 @@ public class CodeTest {
         });
     }
 
+    @Test(expected = InternalError.class)
+    public void testRun2() {
+        Code.run(() -> {
+            throw new InternalError();
+        });
+    }
+
+    @Test(expected = RuntimeException.class)
+    public void testRun3() {
+        Code.run(() -> {
+            throw new Exception();
+        });
+    }
+
     @Test(expected = RuntimeException.class)
     public void testRunSupplier() {
 
