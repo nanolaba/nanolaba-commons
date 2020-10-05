@@ -1,8 +1,17 @@
 package com.nanolaba.commons;
 
+import org.junit.Assert;
 import org.junit.Test;
 
 public class CodeTest {
+
+    @Test
+    public void testIfNull() {
+        Assert.assertEquals("1", Code.ifNull(null, "1"));
+        Assert.assertEquals("2", Code.ifNull("2", "1"));
+        Assert.assertEquals("1", Code.ifNull(null, () -> "1"));
+        Assert.assertEquals("2", Code.ifNull("2", () -> "1"));
+    }
 
     @Test(expected = RuntimeException.class)
     public void testRun() {

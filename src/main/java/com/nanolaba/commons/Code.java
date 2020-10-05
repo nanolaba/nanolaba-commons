@@ -1,8 +1,18 @@
 package com.nanolaba.commons;
 
+import java.util.function.Supplier;
+
 public class Code {
 
     private Code() {
+    }
+
+    public static <T> T ifNull(T t, T defaultObject) {
+        return t == null ? defaultObject : t;
+    }
+
+    public static <T> T ifNull(T t, Supplier<T> defaultObject) {
+        return t == null ? defaultObject.get() : t;
     }
 
     public static void run(CodeAction runnable) {
