@@ -1,10 +1,36 @@
 package com.nanolaba.commons;
 
+import org.apache.commons.lang3.StringUtils;
+
 import java.util.function.Supplier;
 
 public class Code {
 
     private Code() {
+    }
+
+    public static <T> T ifEmpty(T t, T defaultObject) {
+        return t instanceof CharSequence ?
+                (T) StringUtils.defaultIfEmpty((CharSequence) t, (CharSequence) defaultObject) :
+                ifNull(t, defaultObject);
+    }
+
+    public static <T> T ifEmpty(T t, Supplier<T> defaultObject) {
+        return t instanceof CharSequence ?
+                (T) StringUtils.defaultIfEmpty((CharSequence) t, (CharSequence) defaultObject.get()) :
+                ifNull(t, defaultObject);
+    }
+
+    public static <T> T ifBlank(T t, T defaultObject) {
+        return t instanceof CharSequence ?
+                (T) StringUtils.defaultIfBlank((CharSequence) t, (CharSequence) defaultObject) :
+                ifNull(t, defaultObject);
+    }
+
+    public static <T> T ifBlank(T t, Supplier<T> defaultObject) {
+        return t instanceof CharSequence ?
+                (T) StringUtils.defaultIfBlank((CharSequence) t, (CharSequence) defaultObject.get()) :
+                ifNull(t, defaultObject);
     }
 
     public static <T> T ifNull(T t, T defaultObject) {

@@ -6,6 +6,26 @@ import org.junit.Test;
 public class CodeTest {
 
     @Test
+    public void testIfBlank() {
+        Assert.assertEquals("1", Code.ifBlank(null, "1"));
+        Assert.assertEquals("2", Code.ifBlank("2", "1"));
+        Assert.assertEquals("1", Code.ifBlank(null, () -> "1"));
+        Assert.assertEquals("2", Code.ifBlank("2", () -> "1"));
+        Assert.assertEquals("1", Code.ifBlank("", () -> "1"));
+        Assert.assertEquals("1", Code.ifBlank(" ", () -> "1"));
+    }
+
+    @Test
+    public void testIfEmpty() {
+        Assert.assertEquals("1", Code.ifEmpty(null, "1"));
+        Assert.assertEquals("2", Code.ifEmpty("2", "1"));
+        Assert.assertEquals("1", Code.ifEmpty(null, () -> "1"));
+        Assert.assertEquals("2", Code.ifEmpty("2", () -> "1"));
+        Assert.assertEquals("1", Code.ifEmpty("", () -> "1"));
+        Assert.assertEquals(" ", Code.ifEmpty(" ", () -> "1"));
+    }
+
+    @Test
     public void testIfNull() {
         Assert.assertEquals("1", Code.ifNull(null, "1"));
         Assert.assertEquals("2", Code.ifNull("2", "1"));
