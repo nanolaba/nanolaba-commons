@@ -33,6 +33,21 @@ public class CodeTest {
         Assert.assertEquals("2", Code.ifNull("2", () -> "1"));
     }
 
+    @SuppressWarnings("ConstantConditions")
+    @Test
+    public void testCatchNull() {
+
+        Object nullObject = null;
+        Object noNullObject = "abc";
+
+        Assert.assertEquals("1", Code.catchNull(() -> "1", "2"));
+        Assert.assertEquals("2", Code.catchNull(() -> null, "2"));
+        Assert.assertEquals("2", Code.catchNull(() -> nullObject.toString(), "2"));
+        Assert.assertEquals("abc", Code.catchNull(() -> noNullObject.toString(), "2"));
+
+        Assert.assertNull(Code.catchNull(() -> nullObject.toString()));
+    }
+
     @Test(expected = RuntimeException.class)
     public void testRun() {
         Code.run(() -> {

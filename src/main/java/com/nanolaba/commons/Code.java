@@ -41,6 +41,18 @@ public class Code {
         return t == null ? defaultObject.get() : t;
     }
 
+    public static <T> T catchNull(Supplier<T> t, T defaultObject) {
+        try {
+            return ifNull(t.get(), defaultObject);
+        } catch (NullPointerException ex) {
+            return defaultObject;
+        }
+    }
+
+    public static <T> T catchNull(Supplier<T> t) {
+        return catchNull(t, (T) null);
+    }
+
     public static void run(CodeAction runnable) {
         try {
             runnable.run();
