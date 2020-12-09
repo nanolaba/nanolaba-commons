@@ -69,7 +69,7 @@ public class CollectionUtils {
     }
 
     public static <T> Set<T> union(Collection<T> first, Collection<T> second) {
-        Set<T> set = new HashSet<T>();
+        Set<T> set = new HashSet<>();
 
         set.addAll(first);
         set.addAll(second);
@@ -89,6 +89,12 @@ public class CollectionUtils {
         return list;
     }
 
+    public static <E> Set<E> difference(final Set<E> set1, final Set<?> set2) {
+        Set<E> diff = new HashSet<>(set1);
+        diff.removeAll(set2);
+        return diff;
+    }
+
     public static <T> List<T> remove(List<T> list, T... elements) {
         if (elements != null) {
             return list.stream().filter(e -> !ArrayUtils.contains(elements, e)).collect(Collectors.toList());
@@ -96,4 +102,5 @@ public class CollectionUtils {
             return list;
         }
     }
+
 }
