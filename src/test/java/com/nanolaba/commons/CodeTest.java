@@ -93,4 +93,14 @@ public class CodeTest {
         });
     }
 
+    @Test
+    public void testRunQuietlyWithSupplier() {
+        Long v = Code.runQuietly(() -> {
+            Long t = null;
+            return t / 10L;
+        }, () -> 100L);
+
+        Assert.assertEquals(100L, (long) v);
+    }
+
 }

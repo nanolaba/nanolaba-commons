@@ -4,7 +4,7 @@
     <groupId>com.nanolaba</groupId>
     <artifactId>nanolaba-commons</artifactId>
     <name>nanolaba-commons</name>
-    <version>0.0.62</version>
+    <version>0.0.63</version>
     <packaging>jar</packaging>
 
     <properties>
@@ -168,7 +168,7 @@
             </plugin>
             <plugin>
                 <artifactId>maven-clean-plugin</artifactId>
-                <version>2.4</version>
+                <version>3.1.0</version>
                 <executions>
                     <execution>
                         <id>auto-clean</id>

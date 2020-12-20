@@ -69,6 +69,14 @@ public class Code {
         }
     }
 
+    public static <T> T runQuietly(CodeSupplier<T> runnable, Supplier<T> defaultObject) {
+        try {
+            return runnable.get();
+        } catch (Exception t) {
+            return defaultObject.get();
+        }
+    }
+
     public static void runQuietly(CodeAction runnable) {
         try {
             runnable.run();
