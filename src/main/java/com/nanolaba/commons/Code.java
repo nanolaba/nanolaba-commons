@@ -83,6 +83,32 @@ public class Code {
         } catch (Exception t) {/**/}
     }
 
+    public static <T> Supplier<T> memoize(Supplier<T> original) {
+
+        if (original == null) {
+            return null;
+        }
+
+        return new Supplier<T>() {
+            private Supplier<T> delegate = this::firstTime;
+            private boolean initialized;
+
+            @Override
+            public T get() {
+                return delegate.get();
+            }
+
+            private synchronized T firstTime() {
+                if (!initialized) {
+                    T value = original.get();
+                    delegate = () -> value;
+                    initialized = true;
+                }
+                return delegate.get();
+            }
+        };
+    }
+
     @FunctionalInterface
     public interface CodeAction {
         void run() throws Exception;

@@ -327,14 +327,12 @@ public class LOG {
             for (StackTraceElement element : t.getStackTrace()) {
                 try {
                     Class result = Class.forName(element.getClassName());
-                    if (result != null) {
-                        while (result.getEnclosingClass() != null) {
-                            result = result.getEnclosingClass();
-                        }
+                    while (result.getEnclosingClass() != null) {
+                        result = result.getEnclosingClass();
+                    }
 
-                        if (result.equals(LOG.class) || result.equals(LogEntry.class) || ILogger.class.isAssignableFrom(result)) {
-                            continue;
-                        }
+                    if (result.equals(LOG.class) || result.equals(LogEntry.class) || ILogger.class.isAssignableFrom(result)) {
+                        continue;
                     }
 
                     return result;
